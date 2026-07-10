@@ -227,6 +227,14 @@ const content = {
             practice: "Give AI a structure before it writes: summary, risks, decisions, questions, next actions.",
             local: "A factory line lead can summarize defect notes by product, shift, likely cause, and next action.",
             prompt: "Organize these notes into a table with columns for issue, impact, owner, urgency, and next step."
+          },
+          {
+            title: "Spreadsheets and simple numbers",
+            summary: "Use AI to explain formulas, clean up data, and turn numbers into plain-language summaries.",
+            learn: "You do not need to be an Excel expert. Describe what you want in normal words, and AI can suggest the formula, explain an error, or summarize what a table of numbers actually means.",
+            practice: "Paste a small, non-confidential table and ask AI: what stands out, what looks wrong, and what one chart would show this best?",
+            local: "A shop owner in Da Nang can paste weekly sales by product and ask which items are growing, which are slowing, and what to reorder first.",
+            prompt: "Here is a small table of monthly sales by product. Explain the three most important patterns in simple language, then suggest one formula I can use to track this automatically."
           }
         ]
       },
@@ -249,6 +257,14 @@ const content = {
             practice: "Create one reusable prompt for a recurring task in your department.",
             local: "A sales team can keep approved prompts for customer follow-ups, quote explanations, and weekly pipeline summaries.",
             prompt: "Create a reusable prompt template for my team to summarize customer calls. Include placeholders and a privacy reminder."
+          },
+          {
+            title: "Rolling out AI safely",
+            summary: "Introduce AI to a whole department with clear rules, approved tools, and a simple training rhythm.",
+            learn: "Adoption fails when rules are unclear. A good rollout names which tools are approved, what data must never be pasted, who to ask when unsure, and how wins get shared with the team.",
+            practice: "Draft a one-page AI usage guide for your team: three allowed uses, three forbidden ones, and one weekly habit for sharing what worked.",
+            local: "A hotel group in Ho Chi Minh City can pilot AI with the front desk team for two weeks, collect the best prompts, then train housekeeping and sales with real examples.",
+            prompt: "Write a one-page AI usage policy for a small customer service team. Use simple language, include allowed and forbidden examples, and end with three questions staff can ask their manager."
           }
         ]
       },
@@ -271,6 +287,14 @@ const content = {
             practice: "Create a daily 10-minute AI routine for your role.",
             local: "A department head can use AI each morning to prioritize messages, prepare meeting questions, and draft the day's follow-ups.",
             prompt: "Design a daily AI routine for my role. Include morning planning, communication, learning, and end-of-day review."
+          },
+          {
+            title: "Multi-step workflows",
+            summary: "Chain simple AI steps together: collect input, process it, verify the result, then act.",
+            learn: "Big tasks become manageable when you split them into steps and give AI one step at a time: first organize the raw information, then draft, then critique the draft, then produce the final version. You stay the checkpoint between steps.",
+            practice: "Pick one monthly task and write down its four steps. Run each step as its own prompt, and note where a human check is required before continuing.",
+            local: "A logistics coordinator can turn month-end reporting into four prompts: group the delivery data, summarize problems, draft the customer letter, then check the letter against company policy.",
+            prompt: "I will give you a task in four steps: organize these notes, summarize the risks, draft a short report, then list what a human should verify before sending. Start with step one and wait for my confirmation between steps."
           }
         ]
       }
@@ -481,6 +505,14 @@ const content = {
             practice: "Cho AI cấu trúc trước khi viết: tóm tắt, rủi ro, quyết định, câu hỏi và hành động tiếp theo.",
             local: "Một trưởng ca nhà máy có thể tóm tắt lỗi sản phẩm theo sản phẩm, ca làm, nguyên nhân có khả năng và hành động tiếp theo.",
             prompt: "Sắp xếp các ghi chú này thành bảng với các cột: vấn đề, tác động, người phụ trách, mức độ khẩn cấp và bước tiếp theo."
+          },
+          {
+            title: "Bảng tính và số liệu đơn giản",
+            summary: "Dùng AI để giải thích công thức, làm sạch dữ liệu và biến số liệu thành bản tóm tắt dễ hiểu.",
+            learn: "Bạn không cần phải là chuyên gia Excel. Hãy mô tả điều bạn muốn bằng lời bình thường, AI có thể gợi ý công thức, giải thích lỗi hoặc tóm tắt ý nghĩa thật sự của một bảng số liệu.",
+            practice: "Dán một bảng nhỏ không chứa thông tin mật và hỏi AI: điều gì nổi bật, điều gì có vẻ sai và một biểu đồ nào sẽ thể hiện rõ nhất?",
+            local: "Một chủ cửa hàng ở Đà Nẵng có thể dán doanh số hằng tuần theo sản phẩm và hỏi mặt hàng nào đang tăng, mặt hàng nào chậm lại và nên nhập lại hàng nào trước.",
+            prompt: "Đây là bảng doanh số hằng tháng theo sản phẩm. Hãy giải thích ba điểm quan trọng nhất bằng ngôn ngữ đơn giản, sau đó gợi ý một công thức để tôi theo dõi tự động."
           }
         ]
       },
@@ -503,6 +535,14 @@ const content = {
             practice: "Tạo một mẫu prompt có thể dùng lại cho một việc lặp lại trong phòng ban.",
             local: "Đội bán hàng có thể lưu prompt đã phê duyệt cho chăm sóc khách hàng, giải thích báo giá và tóm tắt pipeline hằng tuần.",
             prompt: "Tạo mẫu prompt dùng lại cho đội ngũ của tôi để tóm tắt cuộc gọi khách hàng. Bao gồm chỗ trống cần điền và nhắc nhở về quyền riêng tư."
+          },
+          {
+            title: "Triển khai AI an toàn",
+            summary: "Đưa AI vào cả phòng ban với quy tắc rõ ràng, công cụ đã phê duyệt và nhịp đào tạo đơn giản.",
+            learn: "Việc áp dụng thất bại khi quy tắc không rõ. Một kế hoạch triển khai tốt nêu rõ công cụ nào được phê duyệt, dữ liệu nào tuyệt đối không được dán vào, hỏi ai khi chưa chắc chắn và cách chia sẻ thành công với đội ngũ.",
+            practice: "Soạn hướng dẫn sử dụng AI một trang cho đội của bạn: ba việc được phép, ba việc bị cấm và một thói quen hằng tuần để chia sẻ điều hiệu quả.",
+            local: "Một chuỗi khách sạn ở TP. Hồ Chí Minh có thể thử nghiệm AI với đội lễ tân trong hai tuần, thu thập các prompt tốt nhất, rồi đào tạo bộ phận buồng phòng và kinh doanh bằng ví dụ thật.",
+            prompt: "Viết chính sách sử dụng AI một trang cho một đội chăm sóc khách hàng nhỏ. Dùng ngôn ngữ đơn giản, có ví dụ được phép và bị cấm, kết thúc bằng ba câu hỏi nhân viên có thể hỏi quản lý."
           }
         ]
       },
@@ -525,6 +565,14 @@ const content = {
             practice: "Tạo thói quen AI 10 phút mỗi ngày cho vai trò của bạn.",
             local: "Một trưởng bộ phận có thể dùng AI mỗi sáng để ưu tiên tin nhắn, chuẩn bị câu hỏi họp và soạn việc theo dõi trong ngày.",
             prompt: "Thiết kế thói quen AI hằng ngày cho vai trò của tôi. Bao gồm lập kế hoạch buổi sáng, giao tiếp, học tập và tổng kết cuối ngày."
+          },
+          {
+            title: "Quy trình nhiều bước",
+            summary: "Nối các bước AI đơn giản lại với nhau: thu thập dữ liệu, xử lý, kiểm tra kết quả, rồi hành động.",
+            learn: "Việc lớn trở nên dễ quản lý khi bạn chia thành từng bước và giao cho AI mỗi lần một bước: sắp xếp thông tin thô trước, rồi viết nháp, rồi phản biện bản nháp, cuối cùng tạo phiên bản hoàn chỉnh. Bạn là điểm kiểm soát giữa các bước.",
+            practice: "Chọn một việc hằng tháng và viết ra bốn bước của nó. Chạy từng bước bằng một prompt riêng, và ghi lại chỗ nào cần con người kiểm tra trước khi tiếp tục.",
+            local: "Một điều phối viên logistics có thể biến báo cáo cuối tháng thành bốn prompt: nhóm dữ liệu giao hàng, tóm tắt vấn đề, soạn thư gửi khách, rồi đối chiếu thư với chính sách công ty.",
+            prompt: "Tôi sẽ giao cho bạn một nhiệm vụ gồm bốn bước: sắp xếp các ghi chú này, tóm tắt rủi ro, soạn báo cáo ngắn, rồi liệt kê những gì con người cần kiểm tra trước khi gửi. Hãy bắt đầu bước một và chờ tôi xác nhận giữa các bước."
           }
         ]
       }
@@ -738,23 +786,27 @@ function modulePlan() {
       ? [
           "AI tạo sinh là gì và khác gì với công cụ tìm kiếm truyền thống.",
           "Prompt tốt gồm nhiệm vụ, bối cảnh, định dạng và tiêu chuẩn chất lượng.",
-          "Những thông tin không nên đưa vào công cụ AI khi chưa được công ty cho phép."
+          "Những thông tin không nên đưa vào công cụ AI khi chưa được công ty cho phép.",
+          "Vì sao AI có thể trả lời sai một cách tự tin và cách kiểm tra nhanh câu trả lời."
         ]
       : [
           "What generative AI is and how it differs from traditional search.",
           "Why strong prompts include task, context, format, and quality criteria.",
-          "Which private or company details should stay out of unapproved AI tools."
+          "Which private or company details should stay out of unapproved AI tools.",
+          "Why AI can be confidently wrong, and quick ways to check an answer."
         ],
     quiz: vi
       ? [
           "AI nên được xem là trợ lý, công cụ tìm kiếm, hay người ra quyết định cuối cùng?",
           "Prompt của bạn đã nêu rõ kết quả mong muốn chưa?",
-          "Bạn sẽ kiểm tra lại phần nào trước khi dùng câu trả lời của AI?"
+          "Bạn sẽ kiểm tra lại phần nào trước khi dùng câu trả lời của AI?",
+          "Hãy kể một việc trong tuần này bạn có thể thử giao cho AI với rủi ro thấp."
         ]
       : [
           "Should AI be treated as an assistant, a search box, or the final decision-maker?",
           "Does your prompt state the output you want clearly?",
-          "What would you verify before using the AI answer?"
+          "What would you verify before using the AI answer?",
+          "Name one low-risk task from this week you could try handing to AI."
         ]
   };
 
@@ -770,23 +822,27 @@ function modulePlan() {
         ? [
             "Cách biến ghi chú rời rạc thành báo cáo có cấu trúc.",
             "Cách dùng AI để soạn email, điều chỉnh giọng văn và dịch nội dung.",
-            "Cách nhờ AI hỗ trợ bảng tính, phân tích dữ liệu nhẹ và bản nháp thuyết trình."
+            "Cách nhờ AI hỗ trợ bảng tính, phân tích dữ liệu nhẹ và bản nháp thuyết trình.",
+            "Cách yêu cầu AI giải thích số liệu bằng ngôn ngữ đơn giản trước khi báo cáo."
           ]
         : [
             "How to turn messy notes into structured reports.",
             "How to use AI for email drafting, tone control, and translation.",
-            "How AI can support spreadsheets, light data analysis, and presentation drafts."
+            "How AI can support spreadsheets, light data analysis, and presentation drafts.",
+            "How to ask AI to explain numbers in plain language before you report them."
           ],
       quiz: vi
         ? [
             "Khi nào bạn nên yêu cầu AI trả lời bằng bảng thay vì đoạn văn?",
             "Bạn sẽ yêu cầu AI kiểm tra giả định trong báo cáo như thế nào?",
-            "Hãy viết một prompt yêu cầu AI tạo bản nháp email và phiên bản ngắn hơn."
+            "Hãy viết một prompt yêu cầu AI tạo bản nháp email và phiên bản ngắn hơn.",
+            "Trước khi tin một con số AI đưa ra, bạn sẽ đối chiếu với nguồn nào?"
           ]
         : [
             "When should you ask AI for a table instead of a paragraph?",
             "How would you ask AI to check assumptions in a report?",
-            "Write a prompt that asks for an email draft and a shorter version."
+            "Write a prompt that asks for an email draft and a shorter version.",
+            "Before trusting a number AI gives you, what source would you check it against?"
           ]
     },
     team: {
@@ -799,23 +855,27 @@ function modulePlan() {
         ? [
             "Cách dùng AI để chuẩn bị huấn luyện, phản hồi và trao đổi hiệu suất.",
             "Cách tạo SOP, checklist và tài liệu đào tạo từ kinh nghiệm nội bộ.",
-            "Cách xây thư viện prompt chung với quy tắc bảo mật và kiểm tra chất lượng."
+            "Cách xây thư viện prompt chung với quy tắc bảo mật và kiểm tra chất lượng.",
+            "Cách viết quy tắc sử dụng AI một trang mà cả đội có thể làm theo."
           ]
         : [
             "How AI can prepare coaching, feedback, and performance conversations.",
             "How to create SOPs, checklists, and training documents from internal know-how.",
-            "How to build a shared prompt library with privacy and quality rules."
+            "How to build a shared prompt library with privacy and quality rules.",
+            "How to write a one-page AI usage guide your whole team can follow."
           ],
       quiz: vi
         ? [
             "Một prompt dùng chung cho đội ngũ cần có những phần nào?",
             "Bạn sẽ yêu cầu AI tạo checklist đào tạo nhưng vẫn giữ giọng văn của công ty ra sao?",
-            "Khi nào quản lý nên dùng AI để chuẩn bị, nhưng không nên giao quyết định cho AI?"
+            "Khi nào quản lý nên dùng AI để chuẩn bị, nhưng không nên giao quyết định cho AI?",
+            "Ba quy tắc nào bạn sẽ đưa vào hướng dẫn AI cho phòng ban của mình trước tiên?"
           ]
         : [
             "What should a reusable team prompt include?",
             "How would you ask AI to create a training checklist while preserving company voice?",
-            "When should a manager use AI to prepare, but not delegate the decision?"
+            "When should a manager use AI to prepare, but not delegate the decision?",
+            "Which three rules would you put first in an AI guide for your department?"
           ]
     },
     advanced: {
@@ -828,23 +888,27 @@ function modulePlan() {
         ? [
             "Khi nào nên dùng chatbot, copilot văn phòng, công cụ hình ảnh, giọng nói hoặc tự động hóa.",
             "Cách thiết kế quy trình AI nhiều bước: nhập dữ liệu, xử lý, kiểm tra, hành động.",
-            "Cách đánh giá chất lượng đầu ra: độ đúng, độ đầy đủ, rủi ro và khả năng áp dụng."
+            "Cách đánh giá chất lượng đầu ra: độ đúng, độ đầy đủ, rủi ro và khả năng áp dụng.",
+            "Cách chia một việc lớn hằng tháng thành chuỗi prompt có điểm kiểm soát của con người."
           ]
         : [
             "When to use chatbots, office copilots, image tools, voice tools, or automation.",
             "How to design multi-step AI workflows: input, process, verify, act.",
-            "How to evaluate output quality: accuracy, completeness, risk, and usefulness."
+            "How to evaluate output quality: accuracy, completeness, risk, and usefulness.",
+            "How to split a big monthly task into a prompt chain with human checkpoints."
           ],
       quiz: vi
         ? [
             "Một tác vụ nào trong công việc của bạn có thể tự động hóa một phần nhưng vẫn cần con người phê duyệt?",
             "Bạn sẽ kiểm tra đầu ra AI bằng tiêu chí nào trước khi gửi cho khách hàng hoặc quản lý?",
-            "Hãy chọn công cụ AI phù hợp cho một nhiệm vụ văn bản, một nhiệm vụ dữ liệu và một nhiệm vụ hình ảnh."
+            "Hãy chọn công cụ AI phù hợp cho một nhiệm vụ văn bản, một nhiệm vụ dữ liệu và một nhiệm vụ hình ảnh.",
+            "Trong quy trình bốn bước của bạn, bước nào bắt buộc phải có con người kiểm tra?"
           ]
         : [
             "Which task in your work could be partly automated but still require human approval?",
             "What criteria would you use before sending AI output to a customer or manager?",
-            "Choose an AI tool type for a text task, a data task, and a visual task."
+            "Choose an AI tool type for a text task, a data task, and a visual task.",
+            "In your four-step workflow, which step must always have a human check?"
           ]
     }
   };
