@@ -101,7 +101,7 @@ p {
 .brand-subtitle {
   margin-top: 2px;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.88rem;
 }
 
 .site-tabs {
@@ -116,10 +116,13 @@ p {
 
 .site-tab {
   min-width: 86px;
+  min-height: 44px;
+  display: inline-grid;
+  place-items: center;
   border-radius: 7px;
   padding: 9px 13px;
   color: #35455f;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 800;
   text-align: center;
   text-decoration: none;
@@ -142,13 +145,13 @@ p {
 }
 
 .language-option {
-  min-height: 36px;
+  min-height: 44px;
   border: 0;
   border-radius: 7px;
-  padding: 8px 11px;
+  padding: 8px 13px;
   color: #35455f;
   background: transparent;
-  font-size: 0.86rem;
+  font-size: 0.92rem;
   font-weight: 850;
 }
 
@@ -233,7 +236,7 @@ p {
 .eyebrow {
   margin: 0 0 6px;
   color: var(--blue-2);
-  font-size: 0.73rem;
+  font-size: 0.8rem;
   font-weight: 850;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -296,7 +299,7 @@ p {
 
 label {
   color: #29384f;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 750;
 }
 
@@ -424,6 +427,7 @@ textarea {
 
 .tab {
   min-width: 126px;
+  min-height: 46px;
   border: 0;
   border-radius: 7px;
   padding: 11px 15px;
@@ -480,7 +484,7 @@ textarea {
 .module-kicker,
 .package-price {
   color: var(--blue-2);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 850;
   text-transform: uppercase;
 }
@@ -538,7 +542,7 @@ textarea {
   display: block;
   margin-bottom: 7px;
   color: var(--blue-2);
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 850;
   text-transform: uppercase;
 }
@@ -575,6 +579,7 @@ textarea {
 .lesson-block p {
   margin-bottom: 0;
   color: #475a76;
+  font-size: 1.05rem;
   line-height: 1.6;
 }
 
@@ -608,7 +613,7 @@ textarea {
   display: block;
   margin-bottom: 8px;
   color: var(--blue-2);
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 850;
   text-transform: uppercase;
 }
@@ -616,6 +621,7 @@ textarea {
 .fluency-grid p {
   margin-bottom: 0;
   color: #40516c;
+  font-size: 1.02rem;
   line-height: 1.55;
 }
 
@@ -646,7 +652,8 @@ textarea {
   margin: 0;
   padding-left: 20px;
   color: #40516c;
-  line-height: 1.5;
+  font-size: 1.02rem;
+  line-height: 1.55;
 }
 
 .prompt-coach {
@@ -729,7 +736,7 @@ textarea {
   min-height: 42px;
   margin: 0;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.45;
 }
 
@@ -794,7 +801,9 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  /* A tall sticky header would cover most of a phone screen. */
   .site-header {
+    position: static;
     gap: 12px;
   }
 

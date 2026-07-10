@@ -1,8 +1,10 @@
 # Everday AI
 
-A standalone prototype for an AI-skills training platform aimed at non-technical workers in Southeast Asia and emerging economies.
+An AI-skills training platform aimed at non-technical workers in Southeast Asia and emerging economies.
 
-Open `index.html` in a browser to try it.
+Open `index.html` in a browser (or run `npm start` and visit http://localhost:4173) to try it locally. See `DEPLOYMENT.md` for the full go-live checklist (Netlify hosting + Supabase accounts).
+
+With `config.js` left empty the site runs in offline mode: progress saves to the device and the tester code unlocks all tiers. Once a Supabase project URL and anon key are pasted into `config.js`, learners get real email+password accounts, cross-device progress, and database-backed company unlock codes (`supabase/schema.sql` sets up the tables, security rules, and redemption function).
 
 Recommended public URL names:
 

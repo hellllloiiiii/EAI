@@ -4,7 +4,8 @@
       "Bash(node --check \"/Users/ninipham/Desktop/EAI Project/app.js\")",
       "Bash(git add *)",
       "Bash(git commit -q -m 'Add Supabase accounts, persistence, and DB-backed unlock codes *)",
-      "Bash(git commit -q -m 'Deepen paid-tier content: 3rd module per tier, 4th reading/quiz item \\(EN+VI\\) *)"
+      "Bash(git commit -q -m 'Deepen paid-tier content: 3rd module per tier, 4th reading/quiz item \\(EN+VI\\) *)",
+      "Bash(git commit -q -m 'Readability polish, deployment guide, README refresh *)"
     ]
   }
 }
