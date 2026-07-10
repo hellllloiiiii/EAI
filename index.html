@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Everday AI</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand-lockup" href="#overview" aria-label="Everday AI home">
+        <span class="brand-mark" aria-hidden="true">EAI</span>
+        <span>
+          <span class="brand-name">Everday AI</span>
+          <span class="brand-subtitle">AI training for working professionals</span>
+        </span>
+      </a>
+      <nav class="site-tabs" aria-label="Website sections">
+        <a class="site-tab active" href="#overview">Overview</a>
+        <a class="site-tab" href="#course">Course</a>
+        <a class="site-tab" href="#profile">Profile</a>
+        <a class="site-tab" href="#packages">Packages</a>
+      </nav>
+      <div class="language-switch" aria-label="Language">
+        <button class="language-option active" type="button" data-language="en">English</button>
+        <button class="language-option" type="button" data-language="vi">Tiếng Việt</button>
+      </div>
+      <div class="penn-credit" aria-label="Built by a Penn student">
+        <span id="builtByLabel">Built by</span>
+        <img class="penn-logo" src="./Penn logo.png" alt="Penn" />
+      </div>
+    </header>
+
+    <section class="overview-band" id="overview">
+      <div>
+        <p class="eyebrow">Built for emerging-market teams</p>
+        <h1>Learn to use AI at work, even if you are starting from zero.</h1>
+      </div>
+      <p>
+        Everday AI is a practical course platform for non-technical professionals who want to understand today's AI tools and use them responsibly. It teaches what AI can do, how to write better prompts, how to apply AI to real workplace tasks, and how to avoid common privacy and accuracy mistakes. Use it to save time on writing, research, reports, planning, translation, and everyday decisions while building confidence step by step.
+      </p>
+    </section>
+
+    <main class="app-shell">
+      <aside class="profile-panel" id="profile" aria-label="Learner profile">
+        <div class="brand-row">
+          <div class="mark" aria-hidden="true">EAI</div>
+          <div>
+            <p class="eyebrow">Personalized path</p>
+            <h2>Tell us about your work</h2>
+          </div>
+        </div>
+
+        <section class="learner-card" aria-label="Current learner">
+          <div>
+            <p class="eyebrow">Current path</p>
+            <h2 id="pathTitle">General workplace starter</h2>
+            <p id="pathSubtitle">Personalize the course to make the examples fit your work.</p>
+          </div>
+        </section>
+
+        <form id="profileForm" class="profile-form">
+          <div class="field-row">
+            <label for="age">Age</label>
+            <input id="age" name="age" type="number" min="18" max="75" placeholder="42" />
+          </div>
+
+          <div class="field-row">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+              <option value="">Prefer not to say</option>
+              <option>Female</option>
+              <option>Male</option>
+              <option>Non-binary</option>
+              <option>Prefer to self-describe</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <label for="industry">Industry</label>
+            <select id="industry" name="industry">
+              <option>Retail and sales</option>
+              <option>Manufacturing</option>
+              <option>Hospitality and tourism</option>
+              <option>Banking and finance</option>
+              <option>Healthcare</option>
+              <option>Education</option>
+              <option>Logistics</option>
+              <option>Government services</option>
+              <option>Small business</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="field-row hidden-field" id="customIndustryField">
+            <label for="customIndustry">Describe your industry</label>
+            <input id="customIndustry" name="customIndustry" type="text" placeholder="Renewable energy, legal services, beauty, agriculture..." />
+          </div>
+
+          <div class="field-row">
+            <label for="role">Role</label>
+            <input id="role" name="role" type="text" placeholder="Operations manager" />
+          </div>
+
+          <div class="field-row">
+            <label for="company">Company</label>
+            <textarea id="company" name="company" rows="3" placeholder="Paste your company website or describe what the company does."></textarea>
+          </div>
+
+          <div class="field-row">
+            <label for="experience">Experience</label>
+            <textarea id="experience" name="experience" rows="4" placeholder="I manage a small team and prepare weekly reports."></textarea>
+          </div>
+
+          <button class="primary-action" type="submit">Personalize course</button>
+        </form>
+      </aside>
+
+      <section class="learning-area" id="course">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Tier 1 is free</p>
+            <h2>Start from zero, practice with your real work</h2>
+            <p class="site-description">
+              Follow guided lessons, try workplace prompts, and unlock deeper tiers as your company sponsors more training.
+            </p>
+          </div>
+          <div class="progress-ring" aria-label="Course progress">
+            <span id="progressValue">0%</span>
+          </div>
+        </header>
+
+        <nav class="tier-tabs" aria-label="Course tiers">
+          <button class="tab active" type="button" data-tier="starter">Starter</button>
+          <button class="tab" type="button" data-tier="workflows">Workflows</button>
+          <button class="tab" type="button" data-tier="team">Team</button>
+          <button class="tab" type="button" data-tier="advanced">Advanced</button>
+        </nav>
+
+        <section class="course-layout">
+          <div class="module-list" id="moduleList" aria-label="Modules"></div>
+
+          <article class="lesson-stage" aria-live="polite">
+            <div class="lesson-header">
+              <p class="eyebrow" id="tierLabel">Free starter tier</p>
+              <h3 id="lessonTitle">What is AI?</h3>
+              <p id="lessonSummary">
+                AI tools can read, write, summarize, compare, translate, brainstorm, and help you decide what to do next.
+              </p>
+            </div>
+
+            <div class="module-meta" aria-label="Module plan">
+              <div>
+                <span id="durationLabel">Duration</span>
+                <strong id="durationText">30 minutes</strong>
+              </div>
+              <div>
+                <span id="difficultyLabel">Difficulty</span>
+                <strong id="difficultyText">Foundation</strong>
+              </div>
+              <div>
+                <span id="capabilityLabel">Capabilities</span>
+                <strong id="capabilityText">Writing, summarizing, translating</strong>
+              </div>
+            </div>
+
+            <div class="lesson-body">
+              <div class="lesson-block">
+                <h4>Learn</h4>
+                <p id="learnText"></p>
+              </div>
+              <div class="lesson-block">
+                <h4>Try it at work</h4>
+                <p id="practiceText"></p>
+              </div>
+              <div class="lesson-block">
+                <h4>Local example</h4>
+                <p id="localText"></p>
+              </div>
+            </div>
+
+            <section class="fluency-coach" aria-label="AI fluency coach">
+              <div>
+                <p class="eyebrow" id="fluencyEyebrow">AI fluency coach</p>
+                <h4 id="fluencyTitle">Train like a tech-savvy Ivy League student</h4>
+              </div>
+              <div class="fluency-grid">
+                <div>
+                  <span id="coachNoteLabel">Coach note</span>
+                  <p id="coachNote"></p>
+                </div>
+                <div>
+                  <span id="coachDrillLabel">Practice drill</span>
+                  <p id="coachDrill"></p>
+                </div>
+                <div>
+                  <span id="coachStandardLabel">Fluency standard</span>
+                  <p id="coachStandard"></p>
+                </div>
+              </div>
+            </section>
+
+            <section class="reinforcement-panel" aria-label="Readings and quiz">
+              <div>
+                <p class="eyebrow" id="readingEyebrow">Reading and examples</p>
+                <h4 id="readingTitle">What to review</h4>
+                <ul id="readingList"></ul>
+              </div>
+              <div>
+                <p class="eyebrow" id="quizEyebrow">Knowledge check</p>
+                <h4 id="quizTitle">Quiz checkpoint</h4>
+                <ol id="quizList"></ol>
+              </div>
+            </section>
+
+            <section class="prompt-coach" aria-label="Prompt practice">
+              <div>
+                <p class="eyebrow">Prompt coach</p>
+                <h4>Write a better request</h4>
+              </div>
+              <textarea id="promptInput" rows="5" placeholder="Ask AI to help with a real task from your job."></textarea>
+              <div class="coach-actions">
+                <button class="secondary-action" type="button" id="samplePrompt">Use example</button>
+                <button class="primary-action" type="button" id="checkPrompt">Check prompt</button>
+              </div>
+              <p class="coach-feedback" id="coachFeedback">A strong prompt includes the task, context, format, and what good output looks like.</p>
+            </section>
+          </article>
+
+          <aside class="package-panel" id="packages" aria-label="Packages">
+            <div class="package-intro">
+              <p class="eyebrow">Company sponsored</p>
+              <h3>Unlock deeper tiers</h3>
+              <p>Packages can be bought by a learner or assigned by an employer for a whole team.</p>
+            </div>
+            <form id="accessCodeForm" class="access-code-form">
+              <label for="accessCode">Access code</label>
+              <div class="access-code-row">
+                <input id="accessCode" name="accessCode" type="text" placeholder="Enter code" autocomplete="off" />
+                <button class="secondary-action" type="submit">Apply</button>
+              </div>
+              <p id="accessCodeFeedback" class="access-code-feedback">Use a company or tester code to unlock all tiers.</p>
+            </form>
+            <div id="packageList" class="package-list"></div>
+          </aside>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

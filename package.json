@@ -1,0 +1,10 @@
+{
+  "name": "everday-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI skills training for non-technical professionals in emerging markets.",
+  "scripts": {
+    "start": "python3 -m http.server 4173",
+    "dev": "python3 -m http.server 4173"
+  }
+}
