@@ -23,7 +23,7 @@ const industryOrder = [
 
 const content = {
   en: {
-    nav: ["Overview", "Course", "Profile", "Packages"],
+    nav: ["Overview", "Course", "Profile", "Levels"],
     brandSubtitle: "AI training for working professionals",
     builtBy: "Built by",
     overviewEyebrow: "Learn how to use AI and optimize it in your everyday work and life",
@@ -44,8 +44,7 @@ const content = {
       customIndustry: "Describe your industry",
       role: "Role",
       company: "Company",
-      experience: "Experience",
-      accessCode: "Access code"
+      experience: "Experience"
     },
     placeholders: {
       age: "42",
@@ -53,8 +52,7 @@ const content = {
       customIndustry: "Renewable energy, legal services, beauty, agriculture...",
       company: "Paste your company website or describe what the company does.",
       experience: "I manage a small team and prepare weekly reports.",
-      prompt: "Ask AI to help with a real task from your job.",
-      accessCode: "Enter code"
+      prompt: "Ask AI to help with a real task from your job."
     },
     genderOptions: [
       ["", "Prefer not to say"],
@@ -64,12 +62,11 @@ const content = {
       ["Prefer to self-describe", "Prefer to self-describe"]
     ],
     personalize: "Personalize course",
-    freeTier: "Tier 1 is free",
+    freeTier: "Free for every learner",
     courseTitle: "Start from zero, practice with your real work",
     courseDescription: "Everday AI works like a hybrid AI coaching assistant and trainer: it teaches the concepts, then coaches you through practice until you can use AI with the confidence and fluency of a tech-savvy Ivy League student.",
     progressLabel: "Course progress",
     lesson: "Lesson",
-    locked: "locked",
     durationLabel: "Duration",
     difficultyLabel: "Difficulty",
     capabilityLabel: "AI capabilities",
@@ -108,17 +105,12 @@ const content = {
     promptImprove: "Good start. Add more detail for",
     promptStrongInclude: "Strong prompts usually include",
     promptAndTarget: "and a clear success target.",
-    packageEyebrow: "Company sponsored",
-    packageTitle: "Unlock deeper tiers",
-    packageDescription: "Packages can be bought by a learner or assigned by an employer for a whole team.",
-    accessHelp: "Use a company or tester code to unlock all tiers.",
-    accessGranted: "Access granted. All tiers are unlocked for testing.",
-    accessDenied: "That code did not work. Try again or use a package unlock.",
-    apply: "Apply",
-    openTier: "Open tier",
-    unlockPackage: "Unlock package",
-    lockedMessage: "This tier is locked. Enter your company access code in the package panel to unlock it.",
-    packageLocked: "Enter your company access code above to unlock this package.",
+    packageEyebrow: "Learning path",
+    packageTitle: "Four levels, all free",
+    packageDescription: "Move through the levels at your own pace. Each one builds on the last.",
+    openTier: "Open level",
+    levelLabel: "Level",
+    currentLevel: "You are here",
     account: {
       eyebrow: "Your account",
       title: "Save your progress",
@@ -127,19 +119,13 @@ const content = {
       signUp: "Create account",
       logIn: "Log in",
       logOut: "Log out",
-      signedOut: "Create a free account to keep your progress and unlocked tiers on any device.",
+      signedOut: "Create a free account to keep your progress on any device.",
       signedInAs: "Signed in as",
       checkEmail: "Account created. Open the confirmation email we sent you, click the link inside, then log in here.",
       authFailed: "That did not work. Check your email and password, then try again.",
       fillBoth: "Enter an email and a password with at least 8 characters.",
-      needLogin: "Log in to your account first, then enter your access code.",
       notConfigured: "Online accounts are coming soon. For now, your progress is saved on this device.",
       loggedOut: "You are logged out. Your progress stays saved in your account."
-    },
-    codeErrors: {
-      code_inactive: "This code has been turned off. Ask your company for a new one.",
-      code_expired: "This code has expired. Ask your company for a new one.",
-      code_exhausted: "This code has reached its learner limit. Ask your company for a new one."
     },
     promptChecks: {
       task: "task",
@@ -172,15 +158,15 @@ const content = {
       Other: "your specific work, company priorities, repeated tasks, and daily decisions"
     },
     packages: [
-      { tier: "starter", title: "Starter", price: "Free", description: "AI basics, first prompts, privacy, and safe use." },
-      { tier: "workflows", title: "Essentials", price: "$19 learner", description: "Email, reports, translation, spreadsheets, and everyday office workflows." },
-      { tier: "team", title: "Team", price: "$79 team seat", description: "Manager playbooks, team prompt libraries, and adoption tracking." },
-      { tier: "advanced", title: "Advanced", price: "$149 learner", description: "Tool comparison, automation habits, and confidence-building projects." }
+      { tier: "starter", title: "Starter", description: "AI basics, first prompts, privacy, and safe use." },
+      { tier: "workflows", title: "Everyday workflows", description: "Email, reports, translation, spreadsheets, and everyday office workflows." },
+      { tier: "team", title: "Team", description: "Manager playbooks, team prompt libraries, and safe rollout." },
+      { tier: "advanced", title: "Advanced", description: "Tool comparison, automation habits, and confidence-building projects." }
     ],
     tiers: {
       starter: {
         tab: "Starter",
-        label: "Free starter tier",
+        label: "Level 1: foundations",
         modules: [
           {
             title: "What is AI?",
@@ -210,7 +196,7 @@ const content = {
       },
       workflows: {
         tab: "Workflows",
-        label: "Paid tier: daily workflows",
+        label: "Level 2: daily workflows",
         modules: [
           {
             title: "Email and chat faster",
@@ -240,7 +226,7 @@ const content = {
       },
       team: {
         tab: "Team",
-        label: "Paid tier: team adoption",
+        label: "Level 3: team adoption",
         modules: [
           {
             title: "AI for managers",
@@ -270,7 +256,7 @@ const content = {
       },
       advanced: {
         tab: "Advanced",
-        label: "Paid tier: advanced confidence",
+        label: "Level 4: advanced confidence",
         modules: [
           {
             title: "Compare AI tools",
@@ -301,7 +287,7 @@ const content = {
     }
   },
   vi: {
-    nav: ["Tổng quan", "Khóa học", "Hồ sơ", "Gói học"],
+    nav: ["Tổng quan", "Khóa học", "Hồ sơ", "Cấp học"],
     brandSubtitle: "Đào tạo AI cho người đi làm",
     builtBy: "Được xây dựng bởi",
     overviewEyebrow: "Học cách dùng AI và tối ưu hóa AI trong công việc, cuộc sống hằng ngày",
@@ -322,8 +308,7 @@ const content = {
       customIndustry: "Mô tả ngành của bạn",
       role: "Vai trò",
       company: "Công ty",
-      experience: "Kinh nghiệm",
-      accessCode: "Mã truy cập"
+      experience: "Kinh nghiệm"
     },
     placeholders: {
       age: "42",
@@ -331,8 +316,7 @@ const content = {
       customIndustry: "Năng lượng tái tạo, pháp lý, làm đẹp, nông nghiệp...",
       company: "Dán website công ty hoặc mô tả công ty đang làm gì.",
       experience: "Tôi quản lý một nhóm nhỏ và chuẩn bị báo cáo hằng tuần.",
-      prompt: "Hãy yêu cầu AI hỗ trợ một việc thật trong công việc của bạn.",
-      accessCode: "Nhập mã"
+      prompt: "Hãy yêu cầu AI hỗ trợ một việc thật trong công việc của bạn."
     },
     genderOptions: [
       ["", "Không muốn trả lời"],
@@ -342,12 +326,11 @@ const content = {
       ["Prefer to self-describe", "Muốn tự mô tả"]
     ],
     personalize: "Cá nhân hóa khóa học",
-    freeTier: "Cấp 1 miễn phí",
+    freeTier: "Miễn phí cho mọi học viên",
     courseTitle: "Bắt đầu từ con số 0, thực hành với công việc thật",
     courseDescription: "Everday AI hoạt động như sự kết hợp giữa trợ lý huấn luyện AI và nền tảng đào tạo: nền tảng dạy khái niệm, sau đó hướng dẫn bạn thực hành cho đến khi có thể dùng AI tự tin và thành thạo như một sinh viên Ivy League am hiểu công nghệ.",
     progressLabel: "Tiến độ khóa học",
     lesson: "Bài",
-    locked: "bị khóa",
     durationLabel: "Thời lượng",
     difficultyLabel: "Độ khó",
     capabilityLabel: "Năng lực AI",
@@ -386,17 +369,12 @@ const content = {
     promptImprove: "Khởi đầu tốt. Hãy thêm chi tiết về",
     promptStrongInclude: "Prompt tốt thường có",
     promptAndTarget: "và tiêu chuẩn thành công rõ ràng.",
-    packageEyebrow: "Công ty tài trợ",
-    packageTitle: "Mở khóa các cấp học sâu hơn",
-    packageDescription: "Gói học có thể được mua bởi từng học viên hoặc được công ty cấp cho cả đội ngũ.",
-    accessHelp: "Dùng mã công ty hoặc mã thử nghiệm để mở khóa tất cả cấp học.",
-    accessGranted: "Đã cấp quyền. Tất cả cấp học đã được mở khóa để thử nghiệm.",
-    accessDenied: "Mã này không hợp lệ. Hãy thử lại hoặc dùng nút mở khóa gói học.",
-    apply: "Áp dụng",
+    packageEyebrow: "Lộ trình học",
+    packageTitle: "Bốn cấp học, hoàn toàn miễn phí",
+    packageDescription: "Học theo tốc độ của riêng bạn. Mỗi cấp xây dựng trên cấp trước.",
     openTier: "Mở cấp học",
-    unlockPackage: "Mở khóa gói",
-    lockedMessage: "Cấp học này đang bị khóa. Hãy nhập mã truy cập của công ty trong bảng gói học để mở khóa.",
-    packageLocked: "Hãy nhập mã truy cập của công ty ở trên để mở khóa gói này.",
+    levelLabel: "Cấp",
+    currentLevel: "Bạn đang ở đây",
     account: {
       eyebrow: "Tài khoản của bạn",
       title: "Lưu tiến độ học",
@@ -410,14 +388,8 @@ const content = {
       checkEmail: "Đã tạo tài khoản. Hãy mở email xác nhận chúng tôi vừa gửi, bấm vào liên kết bên trong, rồi quay lại đăng nhập.",
       authFailed: "Chưa đăng nhập được. Hãy kiểm tra email và mật khẩu rồi thử lại.",
       fillBoth: "Hãy nhập email và mật khẩu có ít nhất 8 ký tự.",
-      needLogin: "Hãy đăng nhập vào tài khoản trước, sau đó nhập mã truy cập.",
       notConfigured: "Tài khoản trực tuyến sẽ sớm ra mắt. Hiện tại, tiến độ của bạn được lưu trên thiết bị này.",
       loggedOut: "Bạn đã đăng xuất. Tiến độ vẫn được lưu trong tài khoản của bạn."
-    },
-    codeErrors: {
-      code_inactive: "Mã này đã bị tắt. Hãy hỏi công ty để nhận mã mới.",
-      code_expired: "Mã này đã hết hạn. Hãy hỏi công ty để nhận mã mới.",
-      code_exhausted: "Mã này đã đạt giới hạn số học viên. Hãy hỏi công ty để nhận mã mới."
     },
     promptChecks: {
       task: "nhiệm vụ",
@@ -450,15 +422,15 @@ const content = {
       Other: "công việc cụ thể, ưu tiên của công ty, nhiệm vụ lặp lại và quyết định hằng ngày"
     },
     packages: [
-      { tier: "starter", title: "Khởi đầu", price: "Miễn phí", description: "Nền tảng AI, những prompt đầu tiên, quyền riêng tư và cách dùng an toàn." },
-      { tier: "workflows", title: "Thiết yếu", price: "$19 / học viên", description: "Email, báo cáo, dịch thuật, bảng tính và quy trình văn phòng hằng ngày." },
-      { tier: "team", title: "Đội ngũ", price: "$79 / thành viên", description: "Hướng dẫn cho quản lý, thư viện prompt của đội ngũ và theo dõi mức độ áp dụng." },
-      { tier: "advanced", title: "Nâng cao", price: "$149 / học viên", description: "So sánh công cụ, thói quen tự động hóa và dự án tăng sự tự tin." }
+      { tier: "starter", title: "Khởi đầu", description: "Nền tảng AI, những prompt đầu tiên, quyền riêng tư và cách dùng an toàn." },
+      { tier: "workflows", title: "Quy trình hằng ngày", description: "Email, báo cáo, dịch thuật, bảng tính và quy trình văn phòng hằng ngày." },
+      { tier: "team", title: "Đội ngũ", description: "Hướng dẫn cho quản lý, thư viện prompt của đội ngũ và triển khai an toàn." },
+      { tier: "advanced", title: "Nâng cao", description: "So sánh công cụ, thói quen tự động hóa và dự án tăng sự tự tin." }
     ],
     tiers: {
       starter: {
         tab: "Khởi đầu",
-        label: "Cấp khởi đầu miễn phí",
+        label: "Cấp 1: nền tảng",
         modules: [
           {
             title: "AI là gì?",
@@ -488,7 +460,7 @@ const content = {
       },
       workflows: {
         tab: "Quy trình",
-        label: "Cấp trả phí: quy trình hằng ngày",
+        label: "Cấp 2: quy trình hằng ngày",
         modules: [
           {
             title: "Email và chat nhanh hơn",
@@ -518,7 +490,7 @@ const content = {
       },
       team: {
         tab: "Đội ngũ",
-        label: "Cấp trả phí: áp dụng trong đội ngũ",
+        label: "Cấp 3: áp dụng trong đội ngũ",
         modules: [
           {
             title: "AI cho quản lý",
@@ -548,7 +520,7 @@ const content = {
       },
       advanced: {
         tab: "Nâng cao",
-        label: "Cấp trả phí: tự tin nâng cao",
+        label: "Cấp 4: tự tin nâng cao",
         modules: [
           {
             title: "So sánh công cụ AI",
@@ -584,7 +556,7 @@ let state = {
   language: "en",
   tier: "starter",
   moduleIndex: 0,
-  unlocked: ["starter"],
+  viewed: {},
   profile: {
     industry: "Retail and sales",
     customIndustry: "",
@@ -597,10 +569,12 @@ let state = {
 const saved = localStorage.getItem("everydayAiSkillsState");
 if (saved) {
   state = { ...state, ...JSON.parse(saved) };
-  state.unlocked = normalizeTiers(state.unlocked);
-  if (!state.unlocked.includes(state.tier)) {
+  if (!tierOrder.includes(state.tier)) {
     state.tier = "starter";
     state.moduleIndex = 0;
+  }
+  if (!state.viewed || typeof state.viewed !== "object" || Array.isArray(state.viewed)) {
+    state.viewed = {};
   }
 }
 
@@ -610,9 +584,6 @@ const tabs = document.querySelectorAll(".tab");
 const siteTabs = document.querySelectorAll(".site-tab");
 const languageOptions = document.querySelectorAll(".language-option");
 const form = document.querySelector("#profileForm");
-const accessCodeForm = document.querySelector("#accessCodeForm");
-const accessCodeInput = document.querySelector("#accessCode");
-const accessCodeFeedback = document.querySelector("#accessCodeFeedback");
 const customIndustryField = document.querySelector("#customIndustryField");
 const promptInput = document.querySelector("#promptInput");
 const authForm = document.querySelector("#authForm");
@@ -630,9 +601,8 @@ function saveState() {
   localStorage.setItem("everydayAiSkillsState", JSON.stringify(state));
 }
 
-function normalizeTiers(tiers) {
-  const list = Array.isArray(tiers) ? tiers : [];
-  return tierOrder.filter((tier) => tier === "starter" || list.includes(tier));
+function markViewed() {
+  state.viewed[`${state.tier}:${state.moduleIndex}`] = true;
 }
 
 function profileColumns() {
@@ -646,13 +616,13 @@ function profileColumns() {
     experience: state.profile.experience || null,
     language: state.language,
     current_tier: state.tier,
-    current_module_index: state.moduleIndex
+    current_module_index: state.moduleIndex,
+    viewed_modules: state.viewed
   };
 }
 
 // Fire-and-forget write-through: localStorage stays the instant cache, the
-// account row is the cross-device source of truth. Never sends unlocked_tiers;
-// the database only accepts entitlement changes through redeem_unlock_code.
+// account row is the cross-device source of truth.
 function pushProfile() {
   if (!sb || !currentUser) {
     return;
@@ -681,16 +651,13 @@ function applyRemoteProfile(row) {
     };
     state.language = row.language === "vi" ? "vi" : "en";
     state.moduleIndex = row.current_module_index || 0;
-    state.unlocked = normalizeTiers(row.unlocked_tiers);
-    state.tier = state.unlocked.includes(row.current_tier) ? row.current_tier : "starter";
+    state.tier = tierOrder.includes(row.current_tier) ? row.current_tier : "starter";
+    state.viewed = row.viewed_modules && typeof row.viewed_modules === "object"
+      ? row.viewed_modules
+      : {};
   } else {
     // Fresh account: keep what the learner already entered on this device
     // and push it up instead of wiping it with an empty row.
-    state.unlocked = normalizeTiers(row.unlocked_tiers);
-    if (!state.unlocked.includes(state.tier)) {
-      state.tier = "starter";
-      state.moduleIndex = 0;
-    }
     pushProfile();
   }
 }
@@ -939,14 +906,12 @@ function renderStaticCopy() {
   document.querySelector("label[for='role']").textContent = c.labels.role;
   document.querySelector("label[for='company']").textContent = c.labels.company;
   document.querySelector("label[for='experience']").textContent = c.labels.experience;
-  document.querySelector("label[for='accessCode']").textContent = c.labels.accessCode;
   form.age.placeholder = c.placeholders.age;
   form.customIndustry.placeholder = c.placeholders.customIndustry;
   form.role.placeholder = c.placeholders.role;
   form.company.placeholder = c.placeholders.company;
   form.experience.placeholder = c.placeholders.experience;
   promptInput.placeholder = c.placeholders.prompt;
-  accessCodeInput.placeholder = c.placeholders.accessCode;
   document.querySelector(".profile-form .primary-action").textContent = c.personalize;
   document.querySelector(".topbar .eyebrow").textContent = c.freeTier;
   document.querySelector(".topbar h2").textContent = c.courseTitle;
@@ -974,7 +939,6 @@ function renderStaticCopy() {
   document.querySelector(".package-intro .eyebrow").textContent = c.packageEyebrow;
   document.querySelector(".package-intro h3").textContent = c.packageTitle;
   document.querySelector(".package-intro p:last-child").textContent = c.packageDescription;
-  document.querySelector("#accessCodeForm .secondary-action").textContent = c.apply;
 }
 
 function renderSelects() {
@@ -1080,9 +1044,7 @@ function renderTabs() {
   const c = copy();
   tabs.forEach((tab) => {
     tab.classList.toggle("active", tab.dataset.tier === state.tier);
-    const locked = !state.unlocked.includes(tab.dataset.tier);
-    const label = c.tiers[tab.dataset.tier].tab;
-    tab.textContent = locked ? `${label} ${c.locked}` : label;
+    tab.textContent = c.tiers[tab.dataset.tier].tab;
   });
 
   languageOptions.forEach((option) => {
@@ -1106,6 +1068,7 @@ function renderModules() {
     `;
     button.addEventListener("click", () => {
       state.moduleIndex = index;
+      markViewed();
       render();
       saveState();
       pushProfile();
@@ -1146,34 +1109,30 @@ function renderLesson() {
   document.querySelector("#readingList").innerHTML = plan.readings.map((item) => `<li>${item}</li>`).join("");
   document.querySelector("#quizList").innerHTML = plan.quiz.map((item) => `<li>${item}</li>`).join("");
 
-  const completedModules = state.unlocked.reduce((total, tierKey) => total + c.tiers[tierKey].modules.length, 0);
   const allModules = tierOrder.reduce((total, tierKey) => total + c.tiers[tierKey].modules.length, 0);
-  document.querySelector("#progressValue").textContent = `${Math.round((completedModules / allModules) * 100)}%`;
+  const viewedCount = tierOrder.reduce((total, tierKey) => {
+    return total + c.tiers[tierKey].modules.filter((module, index) => state.viewed[`${tierKey}:${index}`]).length;
+  }, 0);
+  document.querySelector("#progressValue").textContent = `${Math.round((viewedCount / allModules) * 100)}%`;
 }
 
 function renderPackages() {
   const c = copy();
   packageList.innerHTML = "";
-  c.packages.forEach((pack) => {
-    const unlocked = state.unlocked.includes(pack.tier);
+  c.packages.forEach((pack, index) => {
+    const current = state.tier === pack.tier;
     const item = document.createElement("div");
-    item.className = `package-item ${unlocked ? "unlocked" : ""}`;
+    item.className = `package-item ${current ? "unlocked" : ""}`;
     item.innerHTML = `
-      <span class="package-price">${pack.price}</span>
+      <span class="package-price">${c.levelLabel} ${index + 1}</span>
       <span class="package-title">${pack.title}</span>
       <p>${pack.description}</p>
-      <button class="${unlocked ? "secondary-action" : "primary-action"}" type="button">${unlocked ? c.openTier : c.unlockPackage}</button>
+      <button class="${current ? "secondary-action" : "primary-action"}" type="button">${current ? c.currentLevel : c.openTier}</button>
     `;
     item.querySelector("button").addEventListener("click", () => {
-      if (!state.unlocked.includes(pack.tier)) {
-        // Paid tiers are unlocked with a company access code, not a click.
-        accessCodeFeedback.textContent = c.packageLocked;
-        accessCodeFeedback.className = "access-code-feedback error";
-        accessCodeInput.focus();
-        return;
-      }
       state.tier = pack.tier;
       state.moduleIndex = 0;
+      markViewed();
       render();
       saveState();
       pushProfile();
@@ -1185,16 +1144,6 @@ function renderPackages() {
 function resetContextMessages() {
   const c = copy();
   document.querySelector("#coachFeedback").textContent = c.coachDefault;
-  accessCodeFeedback.textContent = c.accessHelp;
-  accessCodeFeedback.className = "access-code-feedback";
-}
-
-function unlockAllTiers() {
-  state.unlocked = [...tierOrder];
-  state.tier = "workflows";
-  state.moduleIndex = 0;
-  saveState();
-  render();
 }
 
 function checkPrompt() {
@@ -1244,14 +1193,9 @@ form.addEventListener("submit", (event) => {
 
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
-    const c = copy();
-    const tier = tab.dataset.tier;
-    if (!state.unlocked.includes(tier)) {
-      document.querySelector("#coachFeedback").textContent = c.lockedMessage;
-      return;
-    }
-    state.tier = tier;
+    state.tier = tab.dataset.tier;
     state.moduleIndex = 0;
+    markViewed();
     render();
     saveState();
     pushProfile();
@@ -1278,58 +1222,6 @@ languageOptions.forEach((option) => {
     saveState();
     pushProfile();
   });
-});
-
-accessCodeForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const c = copy();
-  const code = accessCodeInput.value.trim().toLowerCase();
-  if (!code) {
-    return;
-  }
-
-  // Offline/prototype mode keeps the original tester code so the site still
-  // works before Supabase is configured.
-  if (!sb) {
-    if (code === "pham2026") {
-      unlockAllTiers();
-      accessCodeInput.value = "";
-      accessCodeFeedback.textContent = c.accessGranted;
-      accessCodeFeedback.className = "access-code-feedback success";
-    } else {
-      accessCodeFeedback.textContent = c.accessDenied;
-      accessCodeFeedback.className = "access-code-feedback error";
-    }
-    return;
-  }
-
-  if (!currentUser) {
-    accessCodeFeedback.textContent = c.account.needLogin;
-    accessCodeFeedback.className = "access-code-feedback error";
-    return;
-  }
-
-  const { data, error } = await sb.rpc("redeem_unlock_code", { p_code: code });
-  if (error) {
-    const known = Object.keys(c.codeErrors).find((key) => error.message.includes(key));
-    accessCodeFeedback.textContent = known ? c.codeErrors[known] : c.accessDenied;
-    accessCodeFeedback.className = "access-code-feedback error";
-    return;
-  }
-
-  const tiers = Array.isArray(data) ? data[0]?.unlocked_tiers : data?.unlocked_tiers;
-  state.unlocked = normalizeTiers(tiers);
-  const firstPaid = state.unlocked.find((tier) => tier !== "starter");
-  if (firstPaid) {
-    state.tier = firstPaid;
-    state.moduleIndex = 0;
-  }
-  accessCodeInput.value = "";
-  saveState();
-  pushProfile();
-  render();
-  accessCodeFeedback.textContent = c.accessGranted;
-  accessCodeFeedback.className = "access-code-feedback success";
 });
 
 authForm.addEventListener("submit", async (event) => {
@@ -1380,11 +1272,6 @@ logOutButton.addEventListener("click", async () => {
   const c = copy();
   await sb.auth.signOut();
   currentUser = null;
-  // Paid tiers belong to the account, not the device.
-  state.unlocked = ["starter"];
-  state.tier = "starter";
-  state.moduleIndex = 0;
-  saveState();
   render();
   setAuthNotice(c.account.loggedOut, false);
 });
@@ -1409,5 +1296,7 @@ document.querySelector("#samplePrompt").addEventListener("click", () => {
 
 document.querySelector("#checkPrompt").addEventListener("click", checkPrompt);
 
+markViewed();
+saveState();
 render();
 resetContextMessages();

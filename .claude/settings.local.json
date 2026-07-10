@@ -5,7 +5,8 @@
       "Bash(git add *)",
       "Bash(git commit -q -m 'Add Supabase accounts, persistence, and DB-backed unlock codes *)",
       "Bash(git commit -q -m 'Deepen paid-tier content: 3rd module per tier, 4th reading/quiz item \\(EN+VI\\) *)",
-      "Bash(git commit -q -m 'Readability polish, deployment guide, README refresh *)"
+      "Bash(git commit -q -m 'Readability polish, deployment guide, README refresh *)",
+      "Bash(git commit -q -m 'Remove paid model: all four levels free, progress tracks viewed lessons *)"
     ]
   }
 }
