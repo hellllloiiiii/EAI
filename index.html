@@ -114,6 +114,27 @@
 
           <button class="primary-action" type="submit">Personalize course</button>
         </form>
+
+        <section class="account-card" id="account" aria-label="Account">
+          <p class="eyebrow" id="authEyebrow">Your account</p>
+          <h3 id="authTitle">Save your progress</h3>
+          <p class="auth-status" id="authStatus">Create a free account to keep your progress and unlocked tiers on any device.</p>
+          <form id="authForm" class="auth-form">
+            <div class="field-row">
+              <label for="authEmail" id="authEmailLabel">Email</label>
+              <input id="authEmail" name="authEmail" type="email" autocomplete="email" placeholder="you@example.com" />
+            </div>
+            <div class="field-row">
+              <label for="authPassword" id="authPasswordLabel">Password</label>
+              <input id="authPassword" name="authPassword" type="password" autocomplete="current-password" minlength="8" />
+            </div>
+            <div class="auth-actions">
+              <button class="secondary-action" type="button" id="signUpButton">Create account</button>
+              <button class="primary-action" type="submit" id="logInButton">Log in</button>
+            </div>
+          </form>
+          <button class="secondary-action auth-logout hidden" type="button" id="logOutButton">Log out</button>
+        </section>
       </aside>
 
       <section class="learning-area" id="course">
@@ -247,6 +268,8 @@
       </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="./config.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>

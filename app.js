@@ -1,4 +1,13 @@
 const tierOrder = ["starter", "workflows", "team", "advanced"];
+
+// Supabase is optional: with no config the site runs exactly as before,
+// saving progress to this device only.
+const eaiConfig = window.EAI_CONFIG || {};
+const sb = window.supabase && eaiConfig.supabaseUrl && eaiConfig.supabaseAnonKey
+  ? window.supabase.createClient(eaiConfig.supabaseUrl, eaiConfig.supabaseAnonKey)
+  : null;
+let currentUser = null;
+
 const industryOrder = [
   "Retail and sales",
   "Manufacturing",
@@ -108,7 +117,30 @@ const content = {
     apply: "Apply",
     openTier: "Open tier",
     unlockPackage: "Unlock package",
-    lockedMessage: "This tier is locked. Use the package panel to unlock it for this prototype.",
+    lockedMessage: "This tier is locked. Enter your company access code in the package panel to unlock it.",
+    packageLocked: "Enter your company access code above to unlock this package.",
+    account: {
+      eyebrow: "Your account",
+      title: "Save your progress",
+      email: "Email",
+      password: "Password",
+      signUp: "Create account",
+      logIn: "Log in",
+      logOut: "Log out",
+      signedOut: "Create a free account to keep your progress and unlocked tiers on any device.",
+      signedInAs: "Signed in as",
+      checkEmail: "Account created. Open the confirmation email we sent you, click the link inside, then log in here.",
+      authFailed: "That did not work. Check your email and password, then try again.",
+      fillBoth: "Enter an email and a password with at least 8 characters.",
+      needLogin: "Log in to your account first, then enter your access code.",
+      notConfigured: "Online accounts are coming soon. For now, your progress is saved on this device.",
+      loggedOut: "You are logged out. Your progress stays saved in your account."
+    },
+    codeErrors: {
+      code_inactive: "This code has been turned off. Ask your company for a new one.",
+      code_expired: "This code has expired. Ask your company for a new one.",
+      code_exhausted: "This code has reached its learner limit. Ask your company for a new one."
+    },
     promptChecks: {
       task: "task",
       context: "context",
@@ -339,7 +371,30 @@ const content = {
     apply: "Áp dụng",
     openTier: "Mở cấp học",
     unlockPackage: "Mở khóa gói",
-    lockedMessage: "Cấp học này đang bị khóa. Hãy dùng bảng gói học để mở khóa trong bản mẫu này.",
+    lockedMessage: "Cấp học này đang bị khóa. Hãy nhập mã truy cập của công ty trong bảng gói học để mở khóa.",
+    packageLocked: "Hãy nhập mã truy cập của công ty ở trên để mở khóa gói này.",
+    account: {
+      eyebrow: "Tài khoản của bạn",
+      title: "Lưu tiến độ học",
+      email: "Email",
+      password: "Mật khẩu",
+      signUp: "Tạo tài khoản",
+      logIn: "Đăng nhập",
+      logOut: "Đăng xuất",
+      signedOut: "Tạo tài khoản miễn phí để giữ tiến độ và các cấp học đã mở trên mọi thiết bị.",
+      signedInAs: "Đang đăng nhập với",
+      checkEmail: "Đã tạo tài khoản. Hãy mở email xác nhận chúng tôi vừa gửi, bấm vào liên kết bên trong, rồi quay lại đăng nhập.",
+      authFailed: "Chưa đăng nhập được. Hãy kiểm tra email và mật khẩu rồi thử lại.",
+      fillBoth: "Hãy nhập email và mật khẩu có ít nhất 8 ký tự.",
+      needLogin: "Hãy đăng nhập vào tài khoản trước, sau đó nhập mã truy cập.",
+      notConfigured: "Tài khoản trực tuyến sẽ sớm ra mắt. Hiện tại, tiến độ của bạn được lưu trên thiết bị này.",
+      loggedOut: "Bạn đã đăng xuất. Tiến độ vẫn được lưu trong tài khoản của bạn."
+    },
+    codeErrors: {
+      code_inactive: "Mã này đã bị tắt. Hãy hỏi công ty để nhận mã mới.",
+      code_expired: "Mã này đã hết hạn. Hãy hỏi công ty để nhận mã mới.",
+      code_exhausted: "Mã này đã đạt giới hạn số học viên. Hãy hỏi công ty để nhận mã mới."
+    },
     promptChecks: {
       task: "nhiệm vụ",
       context: "bối cảnh",
@@ -494,6 +549,11 @@ let state = {
 const saved = localStorage.getItem("everydayAiSkillsState");
 if (saved) {
   state = { ...state, ...JSON.parse(saved) };
+  state.unlocked = normalizeTiers(state.unlocked);
+  if (!state.unlocked.includes(state.tier)) {
+    state.tier = "starter";
+    state.moduleIndex = 0;
+  }
 }
 
 const moduleList = document.querySelector("#moduleList");
@@ -507,6 +567,12 @@ const accessCodeInput = document.querySelector("#accessCode");
 const accessCodeFeedback = document.querySelector("#accessCodeFeedback");
 const customIndustryField = document.querySelector("#customIndustryField");
 const promptInput = document.querySelector("#promptInput");
+const authForm = document.querySelector("#authForm");
+const authEmailInput = document.querySelector("#authEmail");
+const authPasswordInput = document.querySelector("#authPassword");
+const authStatus = document.querySelector("#authStatus");
+const signUpButton = document.querySelector("#signUpButton");
+const logOutButton = document.querySelector("#logOutButton");
 
 function copy() {
   return content[state.language] || content.en;
@@ -514,6 +580,145 @@ function copy() {
 
 function saveState() {
   localStorage.setItem("everydayAiSkillsState", JSON.stringify(state));
+}
+
+function normalizeTiers(tiers) {
+  const list = Array.isArray(tiers) ? tiers : [];
+  return tierOrder.filter((tier) => tier === "starter" || list.includes(tier));
+}
+
+function profileColumns() {
+  return {
+    age: state.profile.age ? Number(state.profile.age) : null,
+    gender: state.profile.gender || null,
+    industry: state.profile.industry || null,
+    custom_industry: state.profile.customIndustry || null,
+    role: state.profile.role || null,
+    company: state.profile.company || null,
+    experience: state.profile.experience || null,
+    language: state.language,
+    current_tier: state.tier,
+    current_module_index: state.moduleIndex
+  };
+}
+
+// Fire-and-forget write-through: localStorage stays the instant cache, the
+// account row is the cross-device source of truth. Never sends unlocked_tiers;
+// the database only accepts entitlement changes through redeem_unlock_code.
+function pushProfile() {
+  if (!sb || !currentUser) {
+    return;
+  }
+  sb.from("profiles")
+    .update(profileColumns())
+    .eq("id", currentUser.id)
+    .then(({ error }) => {
+      if (error) {
+        console.warn("Profile sync failed:", error.message);
+      }
+    });
+}
+
+function applyRemoteProfile(row) {
+  const remoteHasProfile = row.role || row.industry || row.experience || row.company;
+  if (remoteHasProfile) {
+    state.profile = {
+      age: row.age ? String(row.age) : "",
+      gender: row.gender || "",
+      industry: row.industry || state.profile.industry,
+      customIndustry: row.custom_industry || "",
+      role: row.role || "",
+      company: row.company || "",
+      experience: row.experience || ""
+    };
+    state.language = row.language === "vi" ? "vi" : "en";
+    state.moduleIndex = row.current_module_index || 0;
+    state.unlocked = normalizeTiers(row.unlocked_tiers);
+    state.tier = state.unlocked.includes(row.current_tier) ? row.current_tier : "starter";
+  } else {
+    // Fresh account: keep what the learner already entered on this device
+    // and push it up instead of wiping it with an empty row.
+    state.unlocked = normalizeTiers(row.unlocked_tiers);
+    if (!state.unlocked.includes(state.tier)) {
+      state.tier = "starter";
+      state.moduleIndex = 0;
+    }
+    pushProfile();
+  }
+}
+
+async function loadRemoteProfile() {
+  if (!sb || !currentUser) {
+    return;
+  }
+  const { data, error } = await sb
+    .from("profiles")
+    .select("*")
+    .eq("id", currentUser.id)
+    .maybeSingle();
+  if (error) {
+    console.warn("Profile load failed:", error.message);
+    return;
+  }
+  let row = data;
+  if (!row) {
+    const inserted = await sb
+      .from("profiles")
+      .insert({ id: currentUser.id, ...profileColumns() })
+      .select()
+      .single();
+    if (inserted.error) {
+      console.warn("Profile create failed:", inserted.error.message);
+      return;
+    }
+    row = inserted.data;
+  }
+  applyRemoteProfile(row);
+  saveState();
+  render();
+  resetContextMessages();
+}
+
+function renderAuth() {
+  const c = copy();
+  const a = c.account;
+  document.querySelector("#authEyebrow").textContent = a.eyebrow;
+  document.querySelector("#authTitle").textContent = a.title;
+  document.querySelector("#authEmailLabel").textContent = a.email;
+  document.querySelector("#authPasswordLabel").textContent = a.password;
+  signUpButton.textContent = a.signUp;
+  document.querySelector("#logInButton").textContent = a.logIn;
+  logOutButton.textContent = a.logOut;
+
+  if (!sb) {
+    authStatus.textContent = a.notConfigured;
+    authForm.classList.add("hidden");
+    logOutButton.classList.add("hidden");
+    return;
+  }
+
+  if (currentUser) {
+    authStatus.textContent = `${a.signedInAs} ${currentUser.email}.`;
+    authForm.classList.add("hidden");
+    logOutButton.classList.remove("hidden");
+  } else {
+    if (!authStatus.dataset.notice) {
+      authStatus.textContent = a.signedOut;
+    }
+    authForm.classList.remove("hidden");
+    logOutButton.classList.add("hidden");
+  }
+}
+
+function setAuthNotice(message, isError) {
+  authStatus.textContent = message;
+  authStatus.dataset.notice = "true";
+  authStatus.classList.toggle("auth-error", Boolean(isError));
+}
+
+function clearAuthNotice() {
+  delete authStatus.dataset.notice;
+  authStatus.classList.remove("auth-error");
 }
 
 function currentModule() {
@@ -839,6 +1044,7 @@ function renderModules() {
       state.moduleIndex = index;
       render();
       saveState();
+      pushProfile();
     });
     moduleList.appendChild(button);
   });
@@ -896,12 +1102,17 @@ function renderPackages() {
     `;
     item.querySelector("button").addEventListener("click", () => {
       if (!state.unlocked.includes(pack.tier)) {
-        state.unlocked.push(pack.tier);
+        // Paid tiers are unlocked with a company access code, not a click.
+        accessCodeFeedback.textContent = c.packageLocked;
+        accessCodeFeedback.className = "access-code-feedback error";
+        accessCodeInput.focus();
+        return;
       }
       state.tier = pack.tier;
       state.moduleIndex = 0;
       render();
       saveState();
+      pushProfile();
     });
     packageList.appendChild(item);
   });
@@ -947,6 +1158,7 @@ function render() {
   renderModules();
   renderLesson();
   renderPackages();
+  renderAuth();
 }
 
 form.addEventListener("submit", (event) => {
@@ -962,6 +1174,7 @@ form.addEventListener("submit", (event) => {
     experience: data.get("experience").trim()
   };
   saveState();
+  pushProfile();
   render();
 });
 
@@ -977,6 +1190,7 @@ tabs.forEach((tab) => {
     state.moduleIndex = 0;
     render();
     saveState();
+    pushProfile();
   });
 });
 
@@ -995,27 +1209,134 @@ languageOptions.forEach((option) => {
   option.addEventListener("click", () => {
     state.language = option.dataset.language;
     resetContextMessages();
+    clearAuthNotice();
     render();
     saveState();
+    pushProfile();
   });
 });
 
-accessCodeForm.addEventListener("submit", (event) => {
+accessCodeForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const c = copy();
   const code = accessCodeInput.value.trim().toLowerCase();
-
-  if (code === "pham2026") {
-    unlockAllTiers();
-    accessCodeInput.value = "";
-    accessCodeFeedback.textContent = c.accessGranted;
-    accessCodeFeedback.className = "access-code-feedback success";
+  if (!code) {
     return;
   }
 
-  accessCodeFeedback.textContent = c.accessDenied;
-  accessCodeFeedback.className = "access-code-feedback error";
+  // Offline/prototype mode keeps the original tester code so the site still
+  // works before Supabase is configured.
+  if (!sb) {
+    if (code === "pham2026") {
+      unlockAllTiers();
+      accessCodeInput.value = "";
+      accessCodeFeedback.textContent = c.accessGranted;
+      accessCodeFeedback.className = "access-code-feedback success";
+    } else {
+      accessCodeFeedback.textContent = c.accessDenied;
+      accessCodeFeedback.className = "access-code-feedback error";
+    }
+    return;
+  }
+
+  if (!currentUser) {
+    accessCodeFeedback.textContent = c.account.needLogin;
+    accessCodeFeedback.className = "access-code-feedback error";
+    return;
+  }
+
+  const { data, error } = await sb.rpc("redeem_unlock_code", { p_code: code });
+  if (error) {
+    const known = Object.keys(c.codeErrors).find((key) => error.message.includes(key));
+    accessCodeFeedback.textContent = known ? c.codeErrors[known] : c.accessDenied;
+    accessCodeFeedback.className = "access-code-feedback error";
+    return;
+  }
+
+  const tiers = Array.isArray(data) ? data[0]?.unlocked_tiers : data?.unlocked_tiers;
+  state.unlocked = normalizeTiers(tiers);
+  const firstPaid = state.unlocked.find((tier) => tier !== "starter");
+  if (firstPaid) {
+    state.tier = firstPaid;
+    state.moduleIndex = 0;
+  }
+  accessCodeInput.value = "";
+  saveState();
+  pushProfile();
+  render();
+  accessCodeFeedback.textContent = c.accessGranted;
+  accessCodeFeedback.className = "access-code-feedback success";
 });
+
+authForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (!sb) {
+    return;
+  }
+  const c = copy();
+  const email = authEmailInput.value.trim();
+  const password = authPasswordInput.value;
+  if (!email || password.length < 8) {
+    setAuthNotice(c.account.fillBoth, true);
+    return;
+  }
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) {
+    setAuthNotice(c.account.authFailed, true);
+    return;
+  }
+  clearAuthNotice();
+  authPasswordInput.value = "";
+});
+
+signUpButton.addEventListener("click", async () => {
+  if (!sb) {
+    return;
+  }
+  const c = copy();
+  const email = authEmailInput.value.trim();
+  const password = authPasswordInput.value;
+  if (!email || password.length < 8) {
+    setAuthNotice(c.account.fillBoth, true);
+    return;
+  }
+  const { error } = await sb.auth.signUp({ email, password });
+  if (error) {
+    setAuthNotice(c.account.authFailed, true);
+    return;
+  }
+  setAuthNotice(c.account.checkEmail, false);
+  authPasswordInput.value = "";
+});
+
+logOutButton.addEventListener("click", async () => {
+  if (!sb) {
+    return;
+  }
+  const c = copy();
+  await sb.auth.signOut();
+  currentUser = null;
+  // Paid tiers belong to the account, not the device.
+  state.unlocked = ["starter"];
+  state.tier = "starter";
+  state.moduleIndex = 0;
+  saveState();
+  render();
+  setAuthNotice(c.account.loggedOut, false);
+});
+
+if (sb) {
+  sb.auth.onAuthStateChange((event, session) => {
+    const user = session?.user || null;
+    const changed = user?.id !== currentUser?.id;
+    currentUser = user;
+    if (user && changed) {
+      clearAuthNotice();
+      loadRemoteProfile();
+    }
+    renderAuth();
+  });
+}
 
 document.querySelector("#samplePrompt").addEventListener("click", () => {
   promptInput.value = currentModule().prompt;

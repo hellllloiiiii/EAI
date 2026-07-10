@@ -322,6 +322,50 @@ textarea {
   resize: vertical;
 }
 
+.account-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid #cfd9e8;
+  border-radius: 8px;
+  background: #f8fbff;
+}
+
+.account-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.auth-form {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.auth-actions button {
+  flex: 1 1 130px;
+}
+
+.auth-status {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.auth-status.auth-error {
+  color: var(--red);
+  font-weight: 800;
+}
+
+.hidden {
+  display: none;
+}
+
 .learning-area {
   display: flex;
   flex-direction: column;

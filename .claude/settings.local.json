@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --check \"/Users/ninipham/Desktop/EAI Project/app.js\")",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'Add Supabase accounts, persistence, and DB-backed unlock codes *)"
+    ]
+  }
+}
