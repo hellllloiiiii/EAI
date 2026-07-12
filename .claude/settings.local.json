@@ -25,7 +25,10 @@
       "Bash(/opt/homebrew/bin/npm install *)",
       "Read(//opt/homebrew/opt/node/**)",
       "Read(//opt/homebrew/bin/**)",
-      "Bash(git commit -q -m 'Update local Claude Code tool permissions *)"
+      "Bash(git commit -q -m 'Update local Claude Code tool permissions *)",
+      "Bash(ping -c 1 -t 3 github.com)",
+      "Bash(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh)",
+      "Bash(bash)"
     ]
   }
 }
