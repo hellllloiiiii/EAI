@@ -35,7 +35,18 @@
       "Bash(npx tsc *)",
       "Bash(echo \"exit: $?\")",
       "Bash(npx -y -p typescript tsc --noEmit --jsx react-jsx --module esnext --moduleResolution bundler --target es2020 --skipLibCheck --strict false src/app/App.tsx src/lib/db.ts src/lib/supabase.ts src/lib/types.ts)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git commit -q -m ' *)",
+      "Bash(curl -s -o /dev/null -w \"page: HTTP %{http_code}\\\\n\" https://astounding-cajeta-7daad2.netlify.app/)",
+      "Bash(curl -s https://astounding-cajeta-7daad2.netlify.app/)",
+      "Bash(curl -s -o /dev/null -w \"app.js: HTTP %{http_code}\\\\n\" https://astounding-cajeta-7daad2.netlify.app/app.js)",
+      "Bash(curl -s https://astounding-cajeta-7daad2.netlify.app/app.js)",
+      "Bash(curl -s -o /dev/null -w \"new URL: HTTP %{http_code}\\\\n\" https://edayai.netlify.app/)",
+      "Bash(curl -s https://edayai.netlify.app/)",
+      "Bash(curl -s -o /dev/null -w \"app.js: HTTP %{http_code}\\\\n\" https://edayai.netlify.app/app.js)",
+      "Bash(npm run *)",
+      "Bash(sed -i '' 's/#3E63DD/#040536/g; s/#3e63dd/#040536/g' src/app/App.tsx src/styles/theme.css)",
+      "Bash(sed -i '' 's/rgba\\(62, 99, 221/rgba\\(4, 5, 54/g' src/styles/theme.css)"
     ]
   }
 }

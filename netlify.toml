@@ -1,6 +1,13 @@
 [build]
   publish = "."
 
+# Client-side routing: serve index.html for the page routes so direct links
+# and refreshes work. Real files (app.js, styles.css, images) are served first.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]

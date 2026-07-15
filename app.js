@@ -64,7 +64,7 @@ const content = {
     personalize: "Personalize course",
     freeTier: "Free for every learner",
     courseTitle: "Start from zero, practice with your real work",
-    courseDescription: "Everday AI works like a hybrid AI coaching assistant and trainer: it teaches the concepts, then coaches you through practice until you can use AI with the confidence and fluency of a tech-savvy Ivy League student.",
+    courseDescription: "Everday AI works like a hybrid AI coaching assistant and trainer: it teaches the concepts, then coaches you through practice until you can use AI with real confidence and fluency in your everyday work.",
     progressLabel: "Course progress",
     lesson: "Lesson",
     durationLabel: "Duration",
@@ -88,7 +88,7 @@ const content = {
       local: "Local example"
     },
     fluencyCoach: "AI fluency coach",
-    fluencyTitle: "Train like a tech-savvy Ivy League student",
+    fluencyTitle: "Build practical AI fluency",
     coachNoteLabel: "Coach note",
     coachDrillLabel: "Practice drill",
     coachStandardLabel: "Fluency standard",
@@ -328,7 +328,7 @@ const content = {
     personalize: "Cá nhân hóa khóa học",
     freeTier: "Miễn phí cho mọi học viên",
     courseTitle: "Bắt đầu từ con số 0, thực hành với công việc thật",
-    courseDescription: "Everday AI hoạt động như sự kết hợp giữa trợ lý huấn luyện AI và nền tảng đào tạo: nền tảng dạy khái niệm, sau đó hướng dẫn bạn thực hành cho đến khi có thể dùng AI tự tin và thành thạo như một sinh viên Ivy League am hiểu công nghệ.",
+    courseDescription: "Everday AI hoạt động như sự kết hợp giữa trợ lý huấn luyện AI và nền tảng đào tạo: nền tảng dạy khái niệm, sau đó hướng dẫn bạn thực hành cho đến khi bạn có thể dùng AI một cách tự tin và thành thạo trong công việc hằng ngày.",
     progressLabel: "Tiến độ khóa học",
     lesson: "Bài",
     durationLabel: "Thời lượng",
@@ -352,7 +352,7 @@ const content = {
       local: "Ví dụ thực tế"
     },
     fluencyCoach: "Huấn luyện viên AI",
-    fluencyTitle: "Rèn luyện như một sinh viên Ivy League am hiểu công nghệ",
+    fluencyTitle: "Xây dựng sự thành thạo AI thực tế",
     coachNoteLabel: "Gợi ý huấn luyện",
     coachDrillLabel: "Bài luyện tập",
     coachStandardLabel: "Tiêu chuẩn thành thạo",
@@ -895,7 +895,7 @@ function renderStaticCopy() {
   document.querySelector("#builtByLabel").textContent = c.builtBy;
   document.querySelector(".overview-band .eyebrow").textContent = c.overviewEyebrow;
   document.querySelector(".overview-band h1").textContent = c.overviewTitle;
-  document.querySelector(".overview-band > p").textContent = c.overviewBody;
+  document.querySelector("#overviewBody").textContent = c.overviewBody;
   document.querySelector(".brand-row .eyebrow").textContent = c.profileEyebrow;
   document.querySelector(".brand-row h2").textContent = c.profileTitle;
   document.querySelector(".learner-card .eyebrow").textContent = c.currentPath;
@@ -1136,6 +1136,7 @@ function renderPackages() {
       render();
       saveState();
       pushProfile();
+      showPage("course", true);
     });
     packageList.appendChild(item);
   });
@@ -1189,6 +1190,7 @@ form.addEventListener("submit", (event) => {
   saveState();
   pushProfile();
   render();
+  showPage("course", true);
 });
 
 tabs.forEach((tab) => {
@@ -1206,11 +1208,41 @@ form.industry.addEventListener("change", () => {
   customIndustryField.classList.toggle("visible", form.industry.value === "Other");
 });
 
-siteTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    siteTabs.forEach((siteTab) => siteTab.classList.remove("active"));
-    tab.classList.add("active");
+// ---- Page router: each nav tab is its own page ----
+const pages = document.querySelectorAll(".page");
+const navLinks = document.querySelectorAll("[data-nav]");
+const pathToPage = { "/": "overview", "/course": "course", "/profile": "profile", "/levels": "levels" };
+const pageToPath = { overview: "/", course: "/course", profile: "/profile", levels: "/levels" };
+
+function showPage(name, push) {
+  if (!pageToPath[name]) {
+    name = "overview";
+  }
+  pages.forEach((page) => {
+    page.hidden = page.dataset.page !== name;
   });
+  siteTabs.forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.nav === name);
+  });
+  if (push) {
+    history.pushState({ page: name }, "", pageToPath[name]);
+  }
+  window.scrollTo(0, 0);
+}
+
+function currentPageFromPath() {
+  return pathToPage[window.location.pathname] || "overview";
+}
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    showPage(link.dataset.nav, true);
+  });
+});
+
+window.addEventListener("popstate", () => {
+  showPage(currentPageFromPath(), false);
 });
 
 languageOptions.forEach((option) => {
@@ -1300,3 +1332,4 @@ markViewed();
 saveState();
 render();
 resetContextMessages();
+showPage(currentPageFromPath(), false);

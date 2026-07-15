@@ -182,11 +182,13 @@ p {
 .overview-band {
   display: grid;
   grid-template-columns: minmax(260px, 0.95fr) minmax(300px, 1.25fr);
-  gap: 28px;
-  align-items: end;
-  padding: 36px 28px 30px;
-  border-bottom: 1px solid var(--line);
+  gap: 32px;
+  align-items: center;
+  padding: 40px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
   background: #ffffff;
+  box-shadow: var(--shadow);
 }
 
 .overview-band h1 {
@@ -197,26 +199,43 @@ p {
   line-height: 1.02;
 }
 
-.overview-band p:last-child {
-  margin-bottom: 4px;
+.overview-band p {
+  margin-bottom: 0;
   color: #34445d;
   font-size: 1.05rem;
   line-height: 1.7;
 }
 
-.app-shell {
-  display: grid;
-  grid-template-columns: minmax(300px, 390px) 1fr;
-  min-height: calc(100vh - 164px);
+.overview-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.app-main {
+  width: 100%;
+}
+
+/* Each nav tab renders one of these as its own full page. */
+.page {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 28px 56px;
+}
+
+.page[hidden] {
+  display: none;
 }
 
 .profile-panel {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 28px;
-  background: #ffffff;
-  border-right: 1px solid var(--line);
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 .brand-row {
@@ -374,7 +393,6 @@ textarea {
   flex-direction: column;
   gap: 18px;
   min-width: 0;
-  padding: 28px;
 }
 
 .topbar {
@@ -443,7 +461,7 @@ textarea {
 
 .course-layout {
   display: grid;
-  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr) minmax(250px, 320px);
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
   gap: 18px;
   align-items: start;
 }
@@ -705,6 +723,9 @@ textarea {
 
 .package-panel {
   padding: 18px;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .package-intro p:last-child {
@@ -743,23 +764,14 @@ textarea {
     justify-content: center;
   }
 
-  .app-shell {
-    grid-template-columns: 340px 1fr;
-  }
-
   .course-layout {
-    grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
-  }
-
-  .package-panel {
-    grid-column: 1 / -1;
+    grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
   }
 }
 
 @media (max-width: 860px) {
   .site-header,
-  .overview-band,
-  .app-shell {
+  .overview-band {
     grid-template-columns: 1fr;
   }
 
@@ -789,11 +801,6 @@ textarea {
 
   .overview-band {
     align-items: start;
-  }
-
-  .profile-panel {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
   }
 
   .course-layout,
@@ -826,11 +833,16 @@ textarea {
 }
 
 @media (max-width: 560px) {
-  .site-header,
-  .overview-band,
-  .profile-panel,
-  .learning-area {
+  .site-header {
     padding: 18px;
+  }
+
+  .page {
+    padding: 18px 18px 40px;
+  }
+
+  .overview-band {
+    padding: 24px;
   }
 
   .overview-band h1 {
