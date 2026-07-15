@@ -31,7 +31,11 @@
       "Bash(bash)",
       "Bash(zip -q \"/private/tmp/claude-501/-Users-ninipham-Desktop-EAI-Project/037b26ee-8d2b-4dd9-8ffb-69789198daaf/scratchpad/everyday-ai-site.zip\" index.html styles.css app.js config.js \"EAI logo.png\" \"Penn logo.png\" netlify.toml)",
       "Bash(unzip -l \"/private/tmp/claude-501/-Users-ninipham-Desktop-EAI-Project/037b26ee-8d2b-4dd9-8ffb-69789198daaf/scratchpad/everyday-ai-site.zip\")",
-      "Bash(git -c user.name=hellllloiiiii -c user.email=phamkhanh2005@gmail.com commit -m 'Replace dead Unsplash image \\(welcome hero, Lụa cover, silk wrap product\\) *)"
+      "Bash(git -c user.name=hellllloiiiii -c user.email=phamkhanh2005@gmail.com commit -m 'Replace dead Unsplash image \\(welcome hero, Lụa cover, silk wrap product\\) *)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(npx -y -p typescript tsc --noEmit --jsx react-jsx --module esnext --moduleResolution bundler --target es2020 --skipLibCheck --strict false src/app/App.tsx src/lib/db.ts src/lib/supabase.ts src/lib/types.ts)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
