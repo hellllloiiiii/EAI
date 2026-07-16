@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Everday AI</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <header class="site-header">
@@ -27,7 +27,7 @@
       </div>
       <div class="penn-credit" aria-label="Built by a Penn student">
         <span id="builtByLabel">Built by</span>
-        <img class="penn-logo" src="./Penn logo.png" alt="Penn" />
+        <img class="penn-logo" src="/Penn logo.png" alt="Penn" />
       </div>
     </header>
 
@@ -291,10 +291,15 @@
           <div id="packageList" class="package-list"></div>
         </aside>
       </section>
+
+      <!-- ===================== Reading article page ===================== -->
+      <section class="page" data-page="reading" aria-label="Reading" hidden>
+        <article class="reading-article" id="articleView"></article>
+      </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-    <script src="./config.js"></script>
-    <script src="./app.js"></script>
+    <script src="/config.js"></script>
+    <script src="/app.js"></script>
   </body>
 </html>

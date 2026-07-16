@@ -108,6 +108,13 @@ const content = {
     quizIntro: "Choose an answer to check your understanding.",
     quizCorrect: "Correct!",
     quizWrong: "Not quite.",
+    readingKicker: "Reading",
+    articleWhat: "What it means",
+    articleExample: "Example",
+    articleWhy: "Why it helps you",
+    articleForYou: "For your work",
+    backToCourse: "← Back to the course",
+    openReading: "Read with examples →",
     coachDefault: "A strong prompt includes the task, context, format, and what good output looks like.",
     promptGood:
       "This is a strong workplace prompt. It gives AI a task, context, output format, and quality target. Next step: remove private details before using it in a real tool.",
@@ -381,6 +388,13 @@ const content = {
     quizIntro: "Chọn một đáp án để kiểm tra mức độ hiểu bài.",
     quizCorrect: "Chính xác!",
     quizWrong: "Chưa đúng.",
+    readingKicker: "Bài đọc",
+    articleWhat: "Nghĩa là gì",
+    articleExample: "Ví dụ",
+    articleWhy: "Vì sao có ích cho bạn",
+    articleForYou: "Với công việc của bạn",
+    backToCourse: "← Quay lại khóa học",
+    openReading: "Đọc kèm ví dụ →",
     coachDefault: "Một prompt tốt nên có nhiệm vụ, bối cảnh, định dạng kết quả và tiêu chuẩn thành công.",
     promptGood:
       "Đây là một prompt tốt cho công việc. Prompt có nhiệm vụ, bối cảnh, định dạng kết quả và tiêu chuẩn chất lượng. Bước tiếp theo: hãy xóa thông tin riêng tư trước khi dùng với công cụ thật.",
@@ -735,6 +749,214 @@ const quizzes = {
         explain: "Thành thạo nghĩa là dẫn dắt AI: nêu vấn đề, cung cấp bối cảnh, kiểm tra kết quả và tinh chỉnh qua vài lượt."
       }
     ]
+  }
+};
+
+// Which reading articles belong to each level (order shown in the panel).
+const readingSlugs = {
+  starter: ["what-is-generative-ai", "anatomy-of-a-good-prompt", "what-not-to-share", "ai-can-be-wrong"],
+  workflows: ["notes-to-report", "ai-for-email", "ai-with-spreadsheets", "explain-the-numbers"],
+  team: ["ai-for-coaching", "ai-for-sops", "shared-prompt-library", "team-ai-guide"],
+  advanced: ["choosing-ai-tools", "multi-step-workflows", "judging-ai-output", "prompt-chains"]
+};
+
+// Full reading articles: plain-language explanation + example + why it helps.
+const articles = {
+  en: {
+    "what-is-generative-ai": {
+      title: "What generative AI is — and how it is different from Google",
+      what: "Generative AI (like ChatGPT) creates a new answer by predicting the words that fit best. A search engine finds existing web pages; generative AI writes a fresh response made just for your request.",
+      example: "Search 'polite late-delivery apology' and Google gives you links to read. Ask an AI assistant the same thing and it writes the actual apology message, ready for you to adjust.",
+      why: "Knowing the difference helps you use AI for drafting and thinking, use search for finding trusted sources, and check AI's facts against that search."
+    },
+    "anatomy-of-a-good-prompt": {
+      title: "What makes a good prompt",
+      what: "A prompt is simply the instruction you give AI. Strong prompts include four things: the task, the context, the format you want, and what a good answer looks like.",
+      example: "Weak: 'Help with my report.' Strong: 'Summarize these sales notes into 5 short bullet points for my manager, in simple language, and highlight any risks.'",
+      why: "The clearer your request, the more useful the answer — so you spend far less time fixing it afterwards."
+    },
+    "what-not-to-share": {
+      title: "What you should never paste into AI",
+      what: "Unless your company has approved a specific tool, keep private information out of it: customer names and phone numbers, ID numbers, passwords, salaries, and confidential contracts.",
+      example: "Instead of pasting a customer's full details, remove them first: 'Write a polite reply to a customer whose order arrived 3 days late.'",
+      why: "This protects your customers, your company, and you. It is the single most important safety habit with AI."
+    },
+    "ai-can-be-wrong": {
+      title: "Why AI is sometimes confidently wrong",
+      what: "AI predicts answers that sound likely, so it can state a wrong fact, date, or number while sounding completely sure. People call this a 'hallucination'.",
+      example: "An AI might invent a statistic or a rule that does not exist. It reads convincingly, but it is simply made up.",
+      why: "Always check anything important — facts, numbers, names, legal or medical points — against a trusted source before you use it."
+    },
+    "notes-to-report": {
+      title: "Turning messy notes into a clear report",
+      what: "AI is very good at taking scattered notes and organizing them. The trick is to tell it the structure you want before it writes.",
+      example: "'Turn these notes into a summary with three sections: decisions made, risks, and next actions.' You get a tidy report instead of a wall of text.",
+      why: "This turns 20 minutes of rewriting into 2 minutes of reviewing."
+    },
+    "ai-for-email": {
+      title: "Using AI for email: drafting, tone, and translation",
+      what: "AI can draft a message, change its tone (friendly, direct, formal), shorten it, or translate it — while you stay in control of the facts.",
+      example: "'Rewrite this message for a busy supplier: respectful, direct, and ending with two clear options.' Then ask for an English version.",
+      why: "You communicate faster and more clearly, even in a second language — just always read it before sending."
+    },
+    "ai-with-spreadsheets": {
+      title: "Using AI with spreadsheets and simple data",
+      what: "You do not need to be an Excel expert. Describe what you want in normal words and AI can suggest a formula, explain an error, or summarize a table.",
+      example: "Paste a small, non-confidential table and ask: 'What are the three biggest changes here, and which product should I reorder first?'",
+      why: "It helps you understand your numbers without wrestling with formulas — just double-check the important totals yourself."
+    },
+    "explain-the-numbers": {
+      title: "Asking AI to explain numbers in plain language",
+      what: "AI can turn a confusing set of figures into a short, plain-language explanation you can share with anyone.",
+      example: "'Explain what this monthly sales table shows, in 3 simple sentences a non-finance manager would understand.'",
+      why: "Clear explanations save meetings and help everyone decide better — but verify the key figures yourself first."
+    },
+    "ai-for-coaching": {
+      title: "Using AI to prepare coaching and feedback",
+      what: "Managers can use AI to think through a conversation before having it: options, questions, and a respectful structure. AI supports empathy; it does not replace it.",
+      example: "'Create a 15-minute coaching plan for a team member who is great with customers but late with reports. Keep the tone respectful.'",
+      why: "You enter difficult conversations more prepared and fair, then adjust the plan to your real person and team culture."
+    },
+    "ai-for-sops": {
+      title: "Turning know-how into SOPs and checklists",
+      what: "AI can turn the way you already do a task into a clear step-by-step guide (an SOP) or a checklist that others can follow.",
+      example: "'Turn these rough steps for welcoming a new customer into a simple checklist with clear headings.'",
+      why: "It captures knowledge that usually lives in one person's head, so the whole team can do the task consistently."
+    },
+    "shared-prompt-library": {
+      title: "Building a shared team prompt library",
+      what: "A prompt library is a saved list of prompts that work, so the team does not reinvent them. Each entry should say when to use it, what to remove, and how to check the result.",
+      example: "A saved 'customer follow-up' prompt with a note: 'Remove the customer's name and order number before running it.'",
+      why: "The team improves together, works faster, and stays consistent and safe."
+    },
+    "team-ai-guide": {
+      title: "Writing a one-page AI guide for your team",
+      what: "A short guide sets clear rules: which tools are approved, what data must never be pasted, who to ask when unsure, and a habit for sharing wins.",
+      example: "Three allowed uses, three forbidden ones, and one weekly 5-minute share of 'a prompt that worked for me'.",
+      why: "Clear, simple rules are what make AI use across a whole team both safe and successful."
+    },
+    "choosing-ai-tools": {
+      title: "Choosing the right AI tool for the job",
+      what: "Different tools are good at different things: chat assistants for writing and thinking, office copilots inside your documents, plus image, translation, and automation tools.",
+      example: "For a customer reply, a chat assistant is fine. For company booking data, only use a tool your company has approved.",
+      why: "Choosing by task, privacy, and approval keeps you both effective and safe."
+    },
+    "multi-step-workflows": {
+      title: "Designing multi-step AI workflows",
+      what: "Big tasks work best in steps: gather the input, process it, verify the result, then act. Give AI one step at a time and stay the checkpoint between steps.",
+      example: "Month-end: (1) group the delivery data, (2) summarize the problems, (3) draft the customer letter, (4) you check it against policy before sending.",
+      why: "Breaking work into checked steps gives you speed without losing control."
+    },
+    "judging-ai-output": {
+      title: "Judging whether AI output is good enough",
+      what: "Before using an answer, check four things: is it accurate, is it complete, is there any risk, and is it actually useful for your goal?",
+      example: "A drafted client email: facts correct? nothing missing? tone safe? does it move things forward? If yes to all, send it.",
+      why: "A quick quality check is what separates confident AI users from risky ones."
+    },
+    "prompt-chains": {
+      title: "Breaking big tasks into a prompt chain",
+      what: "A prompt chain means running several linked prompts in order, each doing one part: organize, then draft, then critique, then finalize.",
+      example: "'First organize these notes. (wait) Now summarize the risks. (wait) Now draft a short report. (wait) Now list what a human should verify.'",
+      why: "Chaining keeps each step focused and easy to check, so the final result is far stronger."
+    }
+  },
+  vi: {
+    "what-is-generative-ai": {
+      title: "AI tạo sinh là gì — và khác gì với Google",
+      what: "AI tạo sinh (như ChatGPT) tạo ra câu trả lời mới bằng cách dự đoán những từ phù hợp nhất. Công cụ tìm kiếm tìm các trang web có sẵn; AI tạo sinh viết một phản hồi mới dành riêng cho yêu cầu của bạn.",
+      example: "Tìm 'lời xin lỗi giao hàng trễ lịch sự' trên Google, bạn nhận được các đường link để đọc. Hỏi trợ lý AI cùng câu đó, nó viết luôn tin nhắn xin lỗi để bạn chỉnh sửa.",
+      why: "Hiểu sự khác biệt giúp bạn dùng AI để viết nháp và suy nghĩ, dùng tìm kiếm để tìm nguồn đáng tin, và đối chiếu dữ kiện của AI với nguồn đó."
+    },
+    "anatomy-of-a-good-prompt": {
+      title: "Điều gì tạo nên một prompt tốt",
+      what: "Prompt đơn giản là câu lệnh bạn đưa cho AI. Prompt tốt gồm bốn phần: nhiệm vụ, bối cảnh, định dạng mong muốn, và một câu trả lời tốt trông như thế nào.",
+      example: "Yếu: 'Giúp tôi làm báo cáo.' Tốt: 'Tóm tắt các ghi chú bán hàng này thành 5 gạch đầu dòng ngắn cho quản lý, bằng ngôn ngữ đơn giản, và nêu rõ rủi ro.'",
+      why: "Yêu cầu càng rõ, câu trả lời càng hữu ích — nên bạn mất ít thời gian sửa lại hơn nhiều."
+    },
+    "what-not-to-share": {
+      title: "Những thông tin bạn không bao giờ nên dán vào AI",
+      what: "Nếu công ty chưa phê duyệt một công cụ cụ thể, hãy giữ thông tin riêng tư bên ngoài: tên và số điện thoại khách hàng, số giấy tờ, mật khẩu, lương, và hợp đồng bảo mật.",
+      example: "Thay vì dán toàn bộ thông tin khách hàng, hãy bỏ chúng ra trước: 'Viết một câu trả lời lịch sự cho khách hàng có đơn đến trễ 3 ngày.'",
+      why: "Điều này bảo vệ khách hàng, công ty và cả bạn. Đây là thói quen an toàn quan trọng nhất khi dùng AI."
+    },
+    "ai-can-be-wrong": {
+      title: "Vì sao AI đôi khi sai một cách rất chắc chắn",
+      what: "AI dự đoán câu trả lời nghe có vẻ hợp lý, nên nó có thể nêu sai dữ kiện, ngày tháng hay con số mà vẫn nghe rất chắc chắn. Người ta gọi đây là 'ảo giác' (hallucination).",
+      example: "AI có thể bịa ra một số liệu thống kê hoặc một quy định không tồn tại. Đọc rất thuyết phục, nhưng hoàn toàn là bịa.",
+      why: "Luôn kiểm tra những điều quan trọng — dữ kiện, con số, tên, vấn đề pháp lý hay y tế — với một nguồn đáng tin trước khi dùng."
+    },
+    "notes-to-report": {
+      title: "Biến ghi chú lộn xộn thành báo cáo rõ ràng",
+      what: "AI rất giỏi trong việc lấy các ghi chú rời rạc và sắp xếp lại. Bí quyết là cho nó biết cấu trúc bạn muốn trước khi nó viết.",
+      example: "'Biến các ghi chú này thành bản tóm tắt với ba mục: quyết định đã đưa ra, rủi ro, và hành động tiếp theo.' Bạn nhận được báo cáo gọn gàng thay vì một khối chữ.",
+      why: "Điều này biến 20 phút viết lại thành 2 phút rà soát."
+    },
+    "ai-for-email": {
+      title: "Dùng AI cho email: viết nháp, giọng văn và dịch",
+      what: "AI có thể viết nháp tin nhắn, đổi giọng văn (thân thiện, trực tiếp, trang trọng), rút gọn, hoặc dịch — trong khi bạn vẫn kiểm soát nội dung.",
+      example: "'Viết lại tin nhắn này cho một nhà cung cấp bận rộn: tôn trọng, trực tiếp, và kết thúc bằng hai lựa chọn rõ ràng.' Rồi xin thêm bản tiếng Anh.",
+      why: "Bạn giao tiếp nhanh và rõ hơn, kể cả bằng ngôn ngữ thứ hai — chỉ cần luôn đọc lại trước khi gửi."
+    },
+    "ai-with-spreadsheets": {
+      title: "Dùng AI với bảng tính và dữ liệu đơn giản",
+      what: "Bạn không cần là chuyên gia Excel. Hãy mô tả điều bạn muốn bằng lời bình thường, AI có thể gợi ý công thức, giải thích lỗi, hoặc tóm tắt một bảng.",
+      example: "Dán một bảng nhỏ không bảo mật và hỏi: 'Ba thay đổi lớn nhất ở đây là gì, và nên nhập lại sản phẩm nào trước?'",
+      why: "Nó giúp bạn hiểu số liệu mà không phải vật lộn với công thức — chỉ cần tự kiểm tra các con số tổng quan trọng."
+    },
+    "explain-the-numbers": {
+      title: "Nhờ AI giải thích số liệu bằng ngôn ngữ đơn giản",
+      what: "AI có thể biến một mớ con số khó hiểu thành lời giải thích ngắn gọn, dễ hiểu để chia sẻ với bất kỳ ai.",
+      example: "'Giải thích bảng doanh số hằng tháng này bằng 3 câu đơn giản mà một quản lý không chuyên về tài chính cũng hiểu.'",
+      why: "Giải thích rõ ràng giúp tiết kiệm các cuộc họp và giúp mọi người quyết định tốt hơn — nhưng hãy tự kiểm tra các con số then chốt trước."
+    },
+    "ai-for-coaching": {
+      title: "Dùng AI để chuẩn bị huấn luyện và phản hồi",
+      what: "Quản lý có thể dùng AI để suy nghĩ qua một cuộc trò chuyện trước khi nói: các lựa chọn, câu hỏi và cấu trúc tôn trọng. AI hỗ trợ sự đồng cảm, không thay thế nó.",
+      example: "'Tạo kế hoạch huấn luyện 15 phút cho một nhân viên chăm sóc khách hàng tốt nhưng hay nộp báo cáo trễ. Giữ giọng văn tôn trọng.'",
+      why: "Bạn bước vào những cuộc trò chuyện khó khăn với sự chuẩn bị tốt và công bằng hơn, rồi điều chỉnh cho phù hợp với con người và văn hóa đội ngũ."
+    },
+    "ai-for-sops": {
+      title: "Biến kinh nghiệm thành SOP và checklist",
+      what: "AI có thể biến cách bạn đang làm một việc thành một hướng dẫn từng bước rõ ràng (SOP) hoặc một checklist để người khác làm theo.",
+      example: "'Biến các bước sơ bộ để đón một khách hàng mới này thành một checklist đơn giản với tiêu đề rõ ràng.'",
+      why: "Nó lưu lại kiến thức thường chỉ nằm trong đầu một người, để cả đội làm việc nhất quán."
+    },
+    "shared-prompt-library": {
+      title: "Xây dựng thư viện prompt dùng chung cho đội",
+      what: "Thư viện prompt là danh sách các prompt hiệu quả được lưu lại, để cả đội không phải nghĩ lại từ đầu. Mỗi mục nên ghi rõ khi nào dùng, cần bỏ gì, và cách kiểm tra kết quả.",
+      example: "Một prompt 'chăm sóc khách hàng' đã lưu kèm ghi chú: 'Xóa tên và số đơn của khách trước khi chạy.'",
+      why: "Cả đội cùng tiến bộ, làm nhanh hơn, và giữ được sự nhất quán và an toàn."
+    },
+    "team-ai-guide": {
+      title: "Viết bản hướng dẫn AI một trang cho đội",
+      what: "Một bản hướng dẫn ngắn đặt ra quy tắc rõ ràng: công cụ nào được duyệt, dữ liệu nào không được dán, hỏi ai khi chưa chắc, và một thói quen chia sẻ thành công.",
+      example: "Ba việc được phép, ba việc bị cấm, và mỗi tuần 5 phút chia sẻ 'một prompt đã hiệu quả với tôi'.",
+      why: "Quy tắc đơn giản, rõ ràng chính là điều làm cho việc dùng AI trên toàn đội vừa an toàn vừa thành công."
+    },
+    "choosing-ai-tools": {
+      title: "Chọn đúng công cụ AI cho từng việc",
+      what: "Mỗi công cụ giỏi một việc: trợ lý chat để viết và suy nghĩ, copilot văn phòng ngay trong tài liệu, cùng các công cụ hình ảnh, dịch và tự động hóa.",
+      example: "Với một câu trả lời khách hàng, trợ lý chat là đủ. Với dữ liệu đặt phòng của công ty, chỉ dùng công cụ công ty đã phê duyệt.",
+      why: "Chọn theo nhiệm vụ, quyền riêng tư và sự phê duyệt giúp bạn vừa hiệu quả vừa an toàn."
+    },
+    "multi-step-workflows": {
+      title: "Thiết kế quy trình AI nhiều bước",
+      what: "Việc lớn làm tốt nhất theo từng bước: thu thập dữ liệu, xử lý, kiểm tra kết quả, rồi hành động. Giao cho AI mỗi lần một bước và bạn là điểm kiểm soát giữa các bước.",
+      example: "Cuối tháng: (1) nhóm dữ liệu giao hàng, (2) tóm tắt vấn đề, (3) soạn thư gửi khách, (4) bạn đối chiếu với chính sách trước khi gửi.",
+      why: "Chia việc thành các bước có kiểm tra giúp bạn nhanh mà không mất kiểm soát."
+    },
+    "judging-ai-output": {
+      title: "Đánh giá kết quả AI đã đủ tốt chưa",
+      what: "Trước khi dùng một câu trả lời, hãy kiểm tra bốn điều: có chính xác không, có đầy đủ không, có rủi ro gì không, và có thật sự hữu ích cho mục tiêu của bạn không?",
+      example: "Một email nháp gửi khách: dữ kiện đúng chưa? thiếu gì không? giọng văn an toàn chưa? có giúp tiến triển không? Nếu đều có, hãy gửi.",
+      why: "Một lần kiểm tra chất lượng nhanh chính là điều phân biệt người dùng AI tự tin với người dùng đầy rủi ro."
+    },
+    "prompt-chains": {
+      title: "Chia việc lớn thành một chuỗi prompt",
+      what: "Chuỗi prompt nghĩa là chạy nhiều prompt liên kết theo thứ tự, mỗi prompt làm một phần: sắp xếp, rồi viết nháp, rồi phản biện, rồi hoàn thiện.",
+      example: "'Trước tiên sắp xếp các ghi chú này. (chờ) Giờ tóm tắt rủi ro. (chờ) Giờ soạn báo cáo ngắn. (chờ) Giờ liệt kê những gì con người cần kiểm tra.'",
+      why: "Chuỗi prompt giữ mỗi bước tập trung và dễ kiểm tra, nên kết quả cuối cùng mạnh hơn nhiều."
+    }
   }
 };
 
@@ -1310,7 +1532,25 @@ function renderLesson() {
   document.querySelector("#coachNote").textContent = `${coachContextIntro()}${c.coachNote}`;
   document.querySelector("#coachDrill").textContent = c.coachDrill;
   document.querySelector("#coachStandard").textContent = c.coachStandard;
-  document.querySelector("#readingList").innerHTML = plan.readings.map((item) => `<li>${item}</li>`).join("");
+  const readingList = document.querySelector("#readingList");
+  readingList.innerHTML = "";
+  (readingSlugs[state.tier] || []).forEach((slug) => {
+    const art = articles[state.language] && articles[state.language][slug];
+    if (!art) {
+      return;
+    }
+    const li = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = `/learn/${slug}`;
+    link.className = "reading-link";
+    link.innerHTML = `<span class="reading-link-title">${art.title}</span><span class="reading-link-cta">${c.openReading}</span>`;
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      openArticle(slug, true);
+    });
+    li.appendChild(link);
+    readingList.appendChild(li);
+  });
 
   renderQuiz();
 
@@ -1489,8 +1729,63 @@ function showPage(name, push) {
   window.scrollTo(0, 0);
 }
 
-function currentPageFromPath() {
-  return pathToPage[window.location.pathname] || "overview";
+let currentArticle = null;
+
+function renderArticle() {
+  const c = copy();
+  const view = document.querySelector("#articleView");
+  const art = articles[state.language] && articles[state.language][currentArticle];
+  if (!art) {
+    view.innerHTML = "";
+    return;
+  }
+  const forYou = state.language === "vi"
+    ? `Hãy thử áp dụng ý này vào ${effectiveIndustryExample()}.`
+    : `Try applying this to ${effectiveIndustryExample()}.`;
+  view.innerHTML = `
+    <button class="secondary-action article-back" type="button" data-article-back>${c.backToCourse}</button>
+    <p class="eyebrow">${c.readingKicker}</p>
+    <h2 class="article-title">${art.title}</h2>
+    <section class="article-block"><h3>${c.articleWhat}</h3><p>${art.what}</p></section>
+    <section class="article-block"><h3>${c.articleExample}</h3><p>${art.example}</p></section>
+    <section class="article-block"><h3>${c.articleWhy}</h3><p>${art.why}</p></section>
+    <section class="article-block article-foryou"><h3>${c.articleForYou}</h3><p>${forYou}</p></section>
+    <button class="primary-action" type="button" data-article-back>${c.backToCourse}</button>
+  `;
+  view.querySelectorAll("[data-article-back]").forEach((btn) => {
+    btn.addEventListener("click", () => showPage("course", true));
+  });
+}
+
+function openArticle(slug, push) {
+  if (!(articles[state.language] && articles[state.language][slug])) {
+    showPage("course", push);
+    return;
+  }
+  currentArticle = slug;
+  renderArticle();
+  pages.forEach((page) => {
+    page.hidden = page.dataset.page !== "reading";
+  });
+  siteTabs.forEach((tab) => tab.classList.remove("active"));
+  if (push) {
+    history.pushState({ article: slug }, "", `/learn/${slug}`);
+  }
+  window.scrollTo(0, 0);
+}
+
+function route() {
+  const path = window.location.pathname;
+  if (path.startsWith("/learn/")) {
+    openArticle(decodeURIComponent(path.slice("/learn/".length)), false);
+    return;
+  }
+  showPage(pathToPage[path] || "overview", false);
+}
+
+function isReadingVisible() {
+  const page = document.querySelector('.page[data-page="reading"]');
+  return page && !page.hidden;
 }
 
 navLinks.forEach((link) => {
@@ -1500,9 +1795,7 @@ navLinks.forEach((link) => {
   });
 });
 
-window.addEventListener("popstate", () => {
-  showPage(currentPageFromPath(), false);
-});
+window.addEventListener("popstate", route);
 
 languageOptions.forEach((option) => {
   option.addEventListener("click", () => {
@@ -1510,6 +1803,9 @@ languageOptions.forEach((option) => {
     resetContextMessages();
     clearAuthNotice();
     render();
+    if (isReadingVisible()) {
+      renderArticle();
+    }
     saveState();
     pushProfile();
   });
@@ -1612,4 +1908,4 @@ document.querySelector("#copyPrompt").addEventListener("click", async () => {
 saveState();
 render();
 resetContextMessages();
-showPage(currentPageFromPath(), false);
+route();
