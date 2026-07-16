@@ -115,6 +115,10 @@ const content = {
     articleForYou: "For your work",
     backToCourse: "← Back to the course",
     openReading: "Read with examples →",
+    outcomeLabel: "Goal",
+    levelDoneTitle: "You've completed this level.",
+    nextStepLead: "Ready for the next step?",
+    continueTo: "Continue to",
     coachDefault: "A strong prompt includes the task, context, format, and what good output looks like.",
     promptGood:
       "This is a strong workplace prompt. It gives AI a task, context, output format, and quality target. Next step: remove private details before using it in a real tool.",
@@ -395,6 +399,10 @@ const content = {
     articleForYou: "Với công việc của bạn",
     backToCourse: "← Quay lại khóa học",
     openReading: "Đọc kèm ví dụ →",
+    outcomeLabel: "Mục tiêu",
+    levelDoneTitle: "Bạn đã hoàn thành cấp này.",
+    nextStepLead: "Sẵn sàng cho bước tiếp theo?",
+    continueTo: "Tiếp tục đến",
     coachDefault: "Một prompt tốt nên có nhiệm vụ, bối cảnh, định dạng kết quả và tiêu chuẩn thành công.",
     promptGood:
       "Đây là một prompt tốt cho công việc. Prompt có nhiệm vụ, bối cảnh, định dạng kết quả và tiêu chuẩn chất lượng. Bước tiếp theo: hãy xóa thông tin riêng tư trước khi dùng với công cụ thật.",
@@ -960,6 +968,70 @@ const articles = {
   }
 };
 
+// How each level builds on the previous one and what the learner walks away with.
+const levelIntros = {
+  en: {
+    starter: { intro: "Start here — no experience needed.", outcome: "By the end: you'll understand what today's AI can and can't do, and how to ask it clearly." },
+    workflows: { intro: "Builds on the basics from Level 1.", outcome: "By the end: you'll use AI to speed up the writing, reports, and everyday tasks you already do." },
+    team: { intro: "Builds on your own AI skills from Levels 1–2.", outcome: "By the end: you'll help a team use AI safely, with shared prompts and a few simple rules." },
+    advanced: { intro: "Builds on everything before it.", outcome: "By the end: you'll pick the right tool for each job, chain steps together, and judge AI's work yourself." }
+  },
+  vi: {
+    starter: { intro: "Bắt đầu từ đây — không cần kinh nghiệm.", outcome: "Kết thúc cấp: bạn hiểu AI ngày nay làm được gì và chưa làm được gì, và cách hỏi cho rõ ràng." },
+    workflows: { intro: "Xây trên nền tảng của Cấp 1.", outcome: "Kết thúc cấp: bạn dùng AI để tăng tốc việc viết, báo cáo và các việc hằng ngày bạn vẫn làm." },
+    team: { intro: "Xây trên kỹ năng AI của bạn ở Cấp 1–2.", outcome: "Kết thúc cấp: bạn giúp cả nhóm dùng AI an toàn, với prompt dùng chung và vài quy tắc đơn giản." },
+    advanced: { intro: "Xây trên tất cả những gì trước đó.", outcome: "Kết thúc cấp: bạn chọn đúng công cụ cho từng việc, nối các bước, và tự đánh giá kết quả AI." }
+  }
+};
+
+// The fluency-coach panel now deepens level by level instead of repeating.
+const coaching = {
+  en: {
+    starter: {
+      note: "At this level the goal is simple: learn when AI can help and how to ask clearly. You bring the judgment; AI brings a fast first draft.",
+      drill: "Take one small task you did this week. Ask AI to do it, then compare its version with yours — notice what it got right and what it missed.",
+      standard: "You're on track when you can turn a rough idea into a clear request, and you always read the answer before you trust it."
+    },
+    workflows: {
+      note: "Now you're folding AI into real daily work. The skill here is giving good context up front and always reviewing the result before it goes out.",
+      drill: "Pick a task you repeat every week — an email, a report, a summary. Write one reusable prompt for it, then improve it twice.",
+      standard: "You're on track when AI saves you real time on routine work, and you catch and fix its mistakes before anyone else sees them."
+    },
+    team: {
+      note: "At this level you're not just using AI yourself — you're helping others use it well. The skill is setting clear, safe habits for a group.",
+      drill: "Write one short rule and one shared prompt your team could actually use this month. Keep it simple enough that everyone will follow it.",
+      standard: "You're on track when your team uses AI more consistently and safely because of something you set up."
+    },
+    advanced: {
+      note: "This level is about judgment and range: choosing the right tool, chaining steps, and knowing when AI's output is good enough to act on.",
+      drill: "Take one monthly task and design it as 3–4 checked steps. Decide exactly where a human must review before moving to the next step.",
+      standard: "You're on track when you can steer AI through a multi-step task, judge the quality yourself, and build habits that last."
+    }
+  },
+  vi: {
+    starter: {
+      note: "Ở cấp này, mục tiêu rất đơn giản: biết khi nào AI giúp được và cách hỏi cho rõ. Bạn mang đến sự phán đoán; AI đưa ra bản nháp đầu tiên thật nhanh.",
+      drill: "Chọn một việc nhỏ bạn đã làm tuần này. Nhờ AI làm lại, rồi so sánh với bản của bạn — xem nó đúng chỗ nào và bỏ sót chỗ nào.",
+      standard: "Bạn đang đi đúng hướng khi có thể biến một ý thô thành yêu cầu rõ ràng, và luôn đọc lại câu trả lời trước khi tin."
+    },
+    workflows: {
+      note: "Giờ bạn đưa AI vào công việc hằng ngày. Kỹ năng ở đây là cung cấp bối cảnh tốt ngay từ đầu và luôn rà soát kết quả trước khi gửi đi.",
+      drill: "Chọn một việc bạn lặp lại mỗi tuần — email, báo cáo, bản tóm tắt. Viết một prompt dùng lại được cho việc đó, rồi cải thiện hai lần.",
+      standard: "Bạn đang đi đúng hướng khi AI thật sự tiết kiệm thời gian cho việc lặp lại, và bạn phát hiện, sửa lỗi trước khi người khác thấy."
+    },
+    team: {
+      note: "Ở cấp này, bạn không chỉ tự dùng AI — bạn giúp người khác dùng tốt. Kỹ năng là thiết lập thói quen rõ ràng và an toàn cho cả nhóm.",
+      drill: "Viết một quy tắc ngắn và một prompt dùng chung mà nhóm bạn có thể dùng ngay trong tháng này. Đủ đơn giản để ai cũng làm theo.",
+      standard: "Bạn đang đi đúng hướng khi nhóm của bạn dùng AI nhất quán và an toàn hơn nhờ điều bạn đã thiết lập."
+    },
+    advanced: {
+      note: "Cấp này nói về sự phán đoán và độ linh hoạt: chọn đúng công cụ, nối các bước, và biết khi nào kết quả AI đủ tốt để hành động.",
+      drill: "Chọn một việc hằng tháng và thiết kế thành 3–4 bước có kiểm tra. Xác định rõ nơi con người phải rà soát trước khi đi tiếp.",
+      standard: "Bạn đang đi đúng hướng khi có thể dẫn dắt AI qua một việc nhiều bước, tự đánh giá chất lượng, và xây thói quen bền vững."
+    }
+  }
+};
+
 let state = {
   language: "en",
   tier: "starter",
@@ -1521,6 +1593,9 @@ function renderLesson() {
     : `Based on ${contextParts.join(", ")}, prioritize examples close to your real work. `;
 
   document.querySelector("#tierLabel").textContent = c.tiers[state.tier].label;
+  const levelIntro = (levelIntros[state.language] && levelIntros[state.language][state.tier]) || levelIntros.en.starter;
+  document.querySelector("#levelIntroText").textContent = levelIntro.intro;
+  document.querySelector("#levelOutcome").textContent = levelIntro.outcome;
   document.querySelector("#lessonTitle").textContent = module.title;
   document.querySelector("#lessonSummary").textContent = module.summary;
   document.querySelector("#durationText").textContent = plan.duration;
@@ -1529,9 +1604,10 @@ function renderLesson() {
   document.querySelector("#learnText").textContent = customPrefix + module.learn;
   document.querySelector("#practiceText").textContent = module.practice;
   document.querySelector("#localText").textContent = module.local;
-  document.querySelector("#coachNote").textContent = `${coachContextIntro()}${c.coachNote}`;
-  document.querySelector("#coachDrill").textContent = c.coachDrill;
-  document.querySelector("#coachStandard").textContent = c.coachStandard;
+  const coach = (coaching[state.language] && coaching[state.language][state.tier]) || coaching.en.starter;
+  document.querySelector("#coachNote").textContent = `${coachContextIntro()}${coach.note}`;
+  document.querySelector("#coachDrill").textContent = coach.drill;
+  document.querySelector("#coachStandard").textContent = coach.standard;
   const readingList = document.querySelector("#readingList");
   readingList.innerHTML = "";
   (readingSlugs[state.tier] || []).forEach((slug) => {
@@ -1564,6 +1640,19 @@ function renderLesson() {
     return total + c.tiers[tierKey].modules.filter((module, index) => isModuleComplete(tierKey, index)).length;
   }, 0);
   document.querySelector("#progressValue").textContent = `${Math.round((completedCount / allModules) * 100)}%`;
+
+  // When every lesson in this level is complete, invite the learner to the next one.
+  const nextLevelBar = document.querySelector("#nextLevelBar");
+  const tierDone = c.tiers[state.tier].modules.every((module, index) => isModuleComplete(state.tier, index));
+  const nextTier = tierOrder[tierOrder.indexOf(state.tier) + 1];
+  if (tierDone && nextTier) {
+    nextLevelBar.hidden = false;
+    document.querySelector("#nextLevelTitle").textContent = c.levelDoneTitle;
+    document.querySelector("#nextLevelLead").textContent = c.nextStepLead;
+    document.querySelector("#nextLevelButton").textContent = `${c.continueTo} ${c.tiers[nextTier].tab} →`;
+  } else {
+    nextLevelBar.hidden = true;
+  }
 }
 
 function renderQuiz() {
@@ -1624,10 +1713,14 @@ function renderPackages() {
     const current = state.tier === pack.tier;
     const item = document.createElement("div");
     item.className = `package-item ${current ? "unlocked" : ""}`;
+    const outcome = levelIntros[state.language] && levelIntros[state.language][pack.tier]
+      ? levelIntros[state.language][pack.tier].outcome
+      : "";
     item.innerHTML = `
       <span class="package-price">${c.levelLabel} ${index + 1}</span>
       <span class="package-title">${pack.title}</span>
       <p>${pack.description}</p>
+      <p class="package-outcome">${outcome}</p>
       <button class="${current ? "secondary-action" : "primary-action"}" type="button">${current ? c.currentLevel : c.openTier}</button>
     `;
     item.querySelector("button").addEventListener("click", () => {
@@ -1884,6 +1977,19 @@ document.querySelector("#samplePrompt").addEventListener("click", () => {
 document.querySelector("#checkPrompt").addEventListener("click", checkPrompt);
 
 document.querySelector("#completeButton").addEventListener("click", toggleComplete);
+
+document.querySelector("#nextLevelButton").addEventListener("click", () => {
+  const nextTier = tierOrder[tierOrder.indexOf(state.tier) + 1];
+  if (!nextTier) {
+    return;
+  }
+  state.tier = nextTier;
+  state.moduleIndex = 0;
+  render();
+  saveState();
+  pushProfile();
+  window.scrollTo(0, 0);
+});
 
 document.querySelector("#copyPrompt").addEventListener("click", async () => {
   const c = copy();

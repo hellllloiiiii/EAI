@@ -74,6 +74,11 @@
             <button class="tab" type="button" data-tier="advanced">Advanced</button>
           </nav>
 
+          <div class="level-intro" id="levelIntro">
+            <p class="level-intro-line" id="levelIntroText"></p>
+            <p class="level-intro-outcome" id="levelOutcome"></p>
+          </div>
+
           <section class="course-layout">
             <div class="module-list" id="moduleList" aria-label="Modules"></div>
 
@@ -176,6 +181,14 @@
 
               <div class="lesson-complete-bar">
                 <button class="primary-action complete-button" type="button" id="completeButton">Mark lesson complete</button>
+
+                <div class="next-level-bar" id="nextLevelBar" hidden>
+                  <div>
+                    <p class="next-level-title" id="nextLevelTitle"></p>
+                    <p class="next-level-lead" id="nextLevelLead"></p>
+                  </div>
+                  <button class="primary-action" type="button" id="nextLevelButton"></button>
+                </div>
               </div>
             </article>
           </section>

@@ -863,6 +863,72 @@ textarea {
   width: 100%;
 }
 
+/* ---- Level progression: intro banner + next-level invite ---- */
+.level-intro {
+  display: grid;
+  gap: 4px;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue-2);
+  border-radius: 8px;
+  background: #f8fbff;
+}
+
+.level-intro-line {
+  margin: 0;
+  color: var(--blue-2);
+  font-weight: 800;
+}
+
+.level-intro-outcome {
+  margin: 0;
+  color: #40516c;
+  line-height: 1.5;
+}
+
+.level-intro-outcome strong {
+  color: var(--ink);
+}
+
+.next-level-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #b7ddcb;
+  border-radius: 8px;
+  background: #eefaf3;
+}
+
+.next-level-bar[hidden] {
+  display: none;
+}
+
+.next-level-title {
+  margin: 0;
+  color: #14543c;
+  font-weight: 850;
+}
+
+.next-level-lead {
+  margin: 2px 0 0;
+  color: #40516c;
+}
+
+.next-level-bar button {
+  white-space: nowrap;
+}
+
+.package-outcome {
+  margin: 0;
+  color: #33445d;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
 .complete-button.is-done {
   border-color: var(--success);
   background: var(--success);
