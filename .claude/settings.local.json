@@ -46,7 +46,11 @@
       "Bash(curl -s -o /dev/null -w \"app.js: HTTP %{http_code}\\\\n\" https://edayai.netlify.app/app.js)",
       "Bash(npm run *)",
       "Bash(sed -i '' 's/#3E63DD/#040536/g; s/#3e63dd/#040536/g' src/app/App.tsx src/styles/theme.css)",
-      "Bash(sed -i '' 's/rgba\\(62, 99, 221/rgba\\(4, 5, 54/g' src/styles/theme.css)"
+      "Bash(sed -i '' 's/rgba\\(62, 99, 221/rgba\\(4, 5, 54/g' src/styles/theme.css)",
+      "Bash(git commit -q -m 'Split into separate pages per nav tab; remove Ivy League phrasing *)",
+      "Bash(bash \"/private/tmp/claude-501/-Users-ninipham-Desktop-EAI-Project/037b26ee-8d2b-4dd9-8ffb-69789198daaf/scratchpad/gh_push2.sh\")",
+      "Bash(curl -s \"https://api.github.com/repos/hellllloiiiii/EAI/commits/main\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('remote HEAD:', d['sha']\\); print\\('remote msg:', d['commit']['message'].splitlines\\(\\)[0]\\)\")"
     ]
   }
 }

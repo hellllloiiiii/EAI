@@ -99,6 +99,15 @@ const content = {
     promptTitle: "Write a better request",
     useExample: "Use example",
     checkPrompt: "Check prompt",
+    copyPrompt: "Copy prompt",
+    copied: "Copied!",
+    tryLiveTitle: "Now try it for real",
+    tryLiveHelp: "Copy your prompt, open a free AI assistant in a new tab, and paste it in. Remember to remove any private details first.",
+    markComplete: "Mark lesson complete",
+    markedComplete: "Lesson completed ✓",
+    quizIntro: "Choose an answer to check your understanding.",
+    quizCorrect: "Correct!",
+    quizWrong: "Not quite.",
     coachDefault: "A strong prompt includes the task, context, format, and what good output looks like.",
     promptGood:
       "This is a strong workplace prompt. It gives AI a task, context, output format, and quality target. Next step: remove private details before using it in a real tool.",
@@ -363,6 +372,15 @@ const content = {
     promptTitle: "Viết yêu cầu tốt hơn",
     useExample: "Dùng ví dụ",
     checkPrompt: "Kiểm tra prompt",
+    copyPrompt: "Sao chép prompt",
+    copied: "Đã sao chép!",
+    tryLiveTitle: "Giờ hãy thử thật",
+    tryLiveHelp: "Sao chép prompt của bạn, mở một trợ lý AI miễn phí ở tab mới và dán vào. Hãy xóa thông tin riêng tư trước khi dùng.",
+    markComplete: "Đánh dấu đã hoàn thành",
+    markedComplete: "Đã hoàn thành bài học ✓",
+    quizIntro: "Chọn một đáp án để kiểm tra mức độ hiểu bài.",
+    quizCorrect: "Chính xác!",
+    quizWrong: "Chưa đúng.",
     coachDefault: "Một prompt tốt nên có nhiệm vụ, bối cảnh, định dạng kết quả và tiêu chuẩn thành công.",
     promptGood:
       "Đây là một prompt tốt cho công việc. Prompt có nhiệm vụ, bối cảnh, định dạng kết quả và tiêu chuẩn chất lượng. Bước tiếp theo: hãy xóa thông tin riêng tư trước khi dùng với công cụ thật.",
@@ -552,11 +570,179 @@ const content = {
   }
 };
 
+// Interactive knowledge-check questions, one small quiz per level.
+const quizzes = {
+  en: {
+    starter: [
+      {
+        q: "An AI chatbot gives a confident answer with a specific number you need for a report. What is the safest next step?",
+        options: ["Trust it — AI is usually right", "Check the number against a reliable source", "Delete the report and start over"],
+        answer: 1,
+        explain: "AI can sound sure of itself but still be wrong. For anything important, verify facts, numbers, and names against a source you trust."
+      },
+      {
+        q: "Which of these is the strongest prompt?",
+        options: ["\"Write something about sales.\"", "\"Summarize these sales notes into 5 short bullet points for my manager, in simple language.\"", "\"Help me with work.\""],
+        answer: 1,
+        explain: "A strong prompt gives the task, the context, the format, and who it is for. The second option does all of that."
+      },
+      {
+        q: "Which information should you NOT paste into an AI tool your company has not approved?",
+        options: ["A customer's full name and phone number", "A general question about writing a polite email", "A request to explain a common spreadsheet formula"],
+        answer: 0,
+        explain: "Keep private and customer data out of unapproved tools. General, non-sensitive questions are perfectly safe."
+      }
+    ],
+    workflows: [
+      {
+        q: "You have messy meeting notes. What is the best way to ask AI to organize them?",
+        options: ["\"Fix my notes.\"", "\"Turn these notes into a summary with sections for decisions, risks, and next actions.\"", "\"Make it look nice.\""],
+        answer: 1,
+        explain: "Giving AI a clear structure — decisions, risks, next actions — produces a far more useful result than a vague request."
+      },
+      {
+        q: "AI wrote an email draft for you. Before sending it to a client, you should:",
+        options: ["Send it right away to save time", "Read it, check the facts and tone, and edit as needed", "Ask AI to send it for you"],
+        answer: 1,
+        explain: "You stay responsible for the message. Always review the facts and tone, and edit before sending."
+      },
+      {
+        q: "What is a good use of AI with a spreadsheet of numbers?",
+        options: ["Ask it to explain the main patterns in plain language", "Assume its totals are always exact", "Paste confidential salary data into an unapproved tool"],
+        answer: 0,
+        explain: "AI is great at explaining patterns in plain words — but double-check important totals yourself and protect private data."
+      }
+    ],
+    team: [
+      {
+        q: "A manager wants their team to use AI safely. What should a simple team AI guide include?",
+        options: ["Only a list of banned words", "Approved tools, what data to never paste, and who to ask when unsure", "Nothing — let everyone decide on their own"],
+        answer: 1,
+        explain: "Clear rules — approved tools, protected data, and a person to ask — make team adoption safe and consistent."
+      },
+      {
+        q: "What makes a shared team prompt most useful?",
+        options: ["It is kept secret from the team", "It says when to use it, what to remove, and how to check the result", "It is as long as possible"],
+        answer: 1,
+        explain: "A good shared prompt is reusable: it explains when to use it, what private details to remove, and how to check the output."
+      },
+      {
+        q: "When should a manager NOT hand a decision to AI?",
+        options: ["When preparing notes before a conversation", "When making a final call about a person's performance", "When drafting a first version of a document"],
+        answer: 1,
+        explain: "AI can help you prepare and draft, but decisions about people should stay with the manager."
+      }
+    ],
+    advanced: [
+      {
+        q: "You want to automate a monthly report in steps. What is the safest design?",
+        options: ["Let AI do everything and send it automatically", "Break it into steps with a human check before anything is sent", "Skip the checking to save time"],
+        answer: 1,
+        explain: "Multi-step automation should always keep a human checkpoint before anything is sent or acted on."
+      },
+      {
+        q: "Different AI tools are good at different jobs. How should you choose one for a task?",
+        options: ["Always use the most famous one", "Match it to the task, and consider privacy and company approval", "Pick one at random"],
+        answer: 1,
+        explain: "Choose based on the type of task, your privacy needs, and whether your company has approved the tool."
+      },
+      {
+        q: "What is the best sign you are becoming fluent with AI?",
+        options: ["You accept the first answer every time", "You can frame a problem, give context, check the output, and improve it in a few rounds", "You never check the results"],
+        answer: 1,
+        explain: "Fluency means guiding AI: framing the problem, giving context, checking the output, and refining it over a few rounds."
+      }
+    ]
+  },
+  vi: {
+    starter: [
+      {
+        q: "Một chatbot AI đưa ra câu trả lời chắc chắn kèm một con số bạn cần cho báo cáo. Bước an toàn nhất tiếp theo là gì?",
+        options: ["Tin ngay — AI thường đúng", "Đối chiếu con số với một nguồn đáng tin cậy", "Xóa báo cáo và làm lại"],
+        answer: 1,
+        explain: "AI có thể nghe rất chắc chắn nhưng vẫn sai. Với việc quan trọng, hãy kiểm tra dữ kiện, con số và tên với một nguồn bạn tin tưởng."
+      },
+      {
+        q: "Đâu là prompt tốt nhất?",
+        options: ["\"Viết gì đó về bán hàng.\"", "\"Tóm tắt các ghi chú bán hàng này thành 5 gạch đầu dòng ngắn cho quản lý, bằng ngôn ngữ đơn giản.\"", "\"Giúp tôi việc công ty.\""],
+        answer: 1,
+        explain: "Một prompt tốt nêu rõ nhiệm vụ, bối cảnh, định dạng và đối tượng. Lựa chọn thứ hai làm được tất cả những điều đó."
+      },
+      {
+        q: "Thông tin nào bạn KHÔNG nên dán vào công cụ AI mà công ty chưa phê duyệt?",
+        options: ["Họ tên đầy đủ và số điện thoại của khách hàng", "Một câu hỏi chung về cách viết email lịch sự", "Yêu cầu giải thích một công thức bảng tính phổ biến"],
+        answer: 0,
+        explain: "Hãy giữ dữ liệu riêng tư và của khách hàng ngoài các công cụ chưa được duyệt. Câu hỏi chung, không nhạy cảm thì hoàn toàn an toàn."
+      }
+    ],
+    workflows: [
+      {
+        q: "Bạn có ghi chú cuộc họp lộn xộn. Cách tốt nhất để nhờ AI sắp xếp là gì?",
+        options: ["\"Sửa ghi chú của tôi.\"", "\"Biến các ghi chú này thành bản tóm tắt với mục quyết định, rủi ro và hành động tiếp theo.\"", "\"Làm cho đẹp lên.\""],
+        answer: 1,
+        explain: "Đưa cho AI một cấu trúc rõ ràng — quyết định, rủi ro, hành động tiếp theo — cho kết quả hữu ích hơn nhiều so với yêu cầu mơ hồ."
+      },
+      {
+        q: "AI đã viết bản nháp email cho bạn. Trước khi gửi cho khách hàng, bạn nên:",
+        options: ["Gửi ngay để tiết kiệm thời gian", "Đọc lại, kiểm tra dữ kiện và giọng văn, chỉnh sửa khi cần", "Nhờ AI gửi giúp"],
+        answer: 1,
+        explain: "Bạn vẫn chịu trách nhiệm về nội dung. Luôn kiểm tra dữ kiện và giọng văn, chỉnh sửa trước khi gửi."
+      },
+      {
+        q: "Đâu là cách dùng AI tốt với một bảng số liệu?",
+        options: ["Nhờ AI giải thích các xu hướng chính bằng ngôn ngữ đơn giản", "Cho rằng các con số tổng của nó luôn chính xác", "Dán dữ liệu lương bảo mật vào công cụ chưa duyệt"],
+        answer: 0,
+        explain: "AI rất giỏi giải thích xu hướng bằng lời đơn giản — nhưng hãy tự kiểm tra các con số tổng quan trọng và bảo vệ dữ liệu riêng tư."
+      }
+    ],
+    team: [
+      {
+        q: "Một quản lý muốn đội ngũ dùng AI an toàn. Bản hướng dẫn AI đơn giản cho đội nên có gì?",
+        options: ["Chỉ một danh sách từ bị cấm", "Công cụ được duyệt, dữ liệu không được dán, và người để hỏi khi chưa chắc", "Không cần gì — để mỗi người tự quyết"],
+        answer: 1,
+        explain: "Quy tắc rõ ràng — công cụ được duyệt, dữ liệu cần bảo vệ, và một người để hỏi — giúp đội ngũ áp dụng an toàn và nhất quán."
+      },
+      {
+        q: "Điều gì làm cho một prompt dùng chung của đội hữu ích nhất?",
+        options: ["Giữ bí mật với cả đội", "Ghi rõ khi nào dùng, cần bỏ gì, và cách kiểm tra kết quả", "Càng dài càng tốt"],
+        answer: 1,
+        explain: "Một prompt dùng chung tốt có thể tái sử dụng: nêu rõ khi nào dùng, cần xóa thông tin riêng tư nào, và cách kiểm tra kết quả."
+      },
+      {
+        q: "Khi nào một quản lý KHÔNG nên giao quyết định cho AI?",
+        options: ["Khi chuẩn bị ghi chú trước một cuộc trò chuyện", "Khi ra quyết định cuối cùng về hiệu suất của một người", "Khi viết bản nháp đầu tiên của tài liệu"],
+        answer: 1,
+        explain: "AI có thể giúp chuẩn bị và viết nháp, nhưng quyết định về con người nên thuộc về quản lý."
+      }
+    ],
+    advanced: [
+      {
+        q: "Bạn muốn tự động hóa báo cáo hằng tháng theo từng bước. Thiết kế an toàn nhất là gì?",
+        options: ["Để AI làm tất cả và gửi tự động", "Chia thành các bước với một lần con người kiểm tra trước khi gửi", "Bỏ qua bước kiểm tra để tiết kiệm thời gian"],
+        answer: 1,
+        explain: "Tự động hóa nhiều bước luôn nên giữ một điểm kiểm tra của con người trước khi gửi hoặc thực hiện."
+      },
+      {
+        q: "Mỗi công cụ AI giỏi một việc khác nhau. Nên chọn công cụ cho một nhiệm vụ như thế nào?",
+        options: ["Luôn dùng công cụ nổi tiếng nhất", "Chọn theo nhiệm vụ, cân nhắc quyền riêng tư và phê duyệt của công ty", "Chọn ngẫu nhiên"],
+        answer: 1,
+        explain: "Hãy chọn dựa trên loại nhiệm vụ, nhu cầu riêng tư, và việc công ty đã phê duyệt công cụ hay chưa."
+      },
+      {
+        q: "Dấu hiệu tốt nhất cho thấy bạn đang thành thạo AI là gì?",
+        options: ["Bạn chấp nhận câu trả lời đầu tiên mọi lúc", "Bạn có thể nêu vấn đề, cung cấp bối cảnh, kiểm tra kết quả và cải thiện qua vài lượt", "Bạn không bao giờ kiểm tra kết quả"],
+        answer: 1,
+        explain: "Thành thạo nghĩa là dẫn dắt AI: nêu vấn đề, cung cấp bối cảnh, kiểm tra kết quả và tinh chỉnh qua vài lượt."
+      }
+    ]
+  }
+};
+
 let state = {
   language: "en",
   tier: "starter",
   moduleIndex: 0,
-  viewed: {},
+  completed: {},
   profile: {
     industry: "Retail and sales",
     customIndustry: "",
@@ -573,9 +759,12 @@ if (saved) {
     state.tier = "starter";
     state.moduleIndex = 0;
   }
-  if (!state.viewed || typeof state.viewed !== "object" || Array.isArray(state.viewed)) {
-    state.viewed = {};
+  const validCompleted = state.completed && typeof state.completed === "object" && !Array.isArray(state.completed);
+  if (!validCompleted) {
+    // Migrate from the earlier "viewed" field if present.
+    state.completed = (state.viewed && typeof state.viewed === "object" && !Array.isArray(state.viewed)) ? state.viewed : {};
   }
+  delete state.viewed;
 }
 
 const moduleList = document.querySelector("#moduleList");
@@ -601,8 +790,20 @@ function saveState() {
   localStorage.setItem("everydayAiSkillsState", JSON.stringify(state));
 }
 
-function markViewed() {
-  state.viewed[`${state.tier}:${state.moduleIndex}`] = true;
+function isModuleComplete(tier, index) {
+  return Boolean(state.completed[`${tier}:${index}`]);
+}
+
+function toggleComplete() {
+  const key = `${state.tier}:${state.moduleIndex}`;
+  if (state.completed[key]) {
+    delete state.completed[key];
+  } else {
+    state.completed[key] = true;
+  }
+  saveState();
+  pushProfile();
+  render();
 }
 
 function profileColumns() {
@@ -617,7 +818,7 @@ function profileColumns() {
     language: state.language,
     current_tier: state.tier,
     current_module_index: state.moduleIndex,
-    viewed_modules: state.viewed
+    completed_modules: state.completed
   };
 }
 
@@ -652,8 +853,8 @@ function applyRemoteProfile(row) {
     state.language = row.language === "vi" ? "vi" : "en";
     state.moduleIndex = row.current_module_index || 0;
     state.tier = tierOrder.includes(row.current_tier) ? row.current_tier : "starter";
-    state.viewed = row.viewed_modules && typeof row.viewed_modules === "object"
-      ? row.viewed_modules
+    state.completed = row.completed_modules && typeof row.completed_modules === "object"
+      ? row.completed_modules
       : {};
   } else {
     // Fresh account: keep what the learner already entered on this device
@@ -936,6 +1137,9 @@ function renderStaticCopy() {
   document.querySelector(".prompt-coach h4").textContent = c.promptTitle;
   document.querySelector("#samplePrompt").textContent = c.useExample;
   document.querySelector("#checkPrompt").textContent = c.checkPrompt;
+  document.querySelector("#copyPrompt").textContent = c.copyPrompt;
+  document.querySelector("#tryLiveTitle").textContent = c.tryLiveTitle;
+  document.querySelector("#tryLiveHelp").textContent = c.tryLiveHelp;
   document.querySelector(".package-intro .eyebrow").textContent = c.packageEyebrow;
   document.querySelector(".package-intro h3").textContent = c.packageTitle;
   document.querySelector(".package-intro p:last-child").textContent = c.packageDescription;
@@ -1058,17 +1262,17 @@ function renderModules() {
   const tier = c.tiers[state.tier];
   const plan = modulePlan();
   tier.modules.forEach((module, index) => {
+    const done = isModuleComplete(state.tier, index);
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `module-button ${index === state.moduleIndex ? "active" : ""}`;
+    button.className = `module-button ${index === state.moduleIndex ? "active" : ""} ${done ? "done" : ""}`;
     button.innerHTML = `
-      <span class="module-kicker">${c.lesson} ${index + 1} - ${plan.duration}</span>
+      <span class="module-kicker">${c.lesson} ${index + 1} - ${plan.duration}${done ? ' <span class="module-check">✓</span>' : ""}</span>
       <span class="module-title">${module.title}</span>
       <span>${module.summary}</span>
     `;
     button.addEventListener("click", () => {
       state.moduleIndex = index;
-      markViewed();
       render();
       saveState();
       pushProfile();
@@ -1107,13 +1311,70 @@ function renderLesson() {
   document.querySelector("#coachDrill").textContent = c.coachDrill;
   document.querySelector("#coachStandard").textContent = c.coachStandard;
   document.querySelector("#readingList").innerHTML = plan.readings.map((item) => `<li>${item}</li>`).join("");
-  document.querySelector("#quizList").innerHTML = plan.quiz.map((item) => `<li>${item}</li>`).join("");
+
+  renderQuiz();
+
+  const completeBtn = document.querySelector("#completeButton");
+  const done = isModuleComplete(state.tier, state.moduleIndex);
+  completeBtn.textContent = done ? c.markedComplete : c.markComplete;
+  completeBtn.classList.toggle("is-done", done);
 
   const allModules = tierOrder.reduce((total, tierKey) => total + c.tiers[tierKey].modules.length, 0);
-  const viewedCount = tierOrder.reduce((total, tierKey) => {
-    return total + c.tiers[tierKey].modules.filter((module, index) => state.viewed[`${tierKey}:${index}`]).length;
+  const completedCount = tierOrder.reduce((total, tierKey) => {
+    return total + c.tiers[tierKey].modules.filter((module, index) => isModuleComplete(tierKey, index)).length;
   }, 0);
-  document.querySelector("#progressValue").textContent = `${Math.round((viewedCount / allModules) * 100)}%`;
+  document.querySelector("#progressValue").textContent = `${Math.round((completedCount / allModules) * 100)}%`;
+}
+
+function renderQuiz() {
+  const c = copy();
+  const container = document.querySelector("#quizList");
+  container.innerHTML = "";
+  const items = (quizzes[state.language] && quizzes[state.language][state.tier]) || [];
+  items.forEach((item, qi) => {
+    const block = document.createElement("div");
+    block.className = "quiz-item";
+
+    const question = document.createElement("p");
+    question.className = "quiz-question";
+    question.textContent = `${qi + 1}. ${item.q}`;
+    block.appendChild(question);
+
+    const opts = document.createElement("div");
+    opts.className = "quiz-options";
+    const feedback = document.createElement("p");
+    feedback.className = "quiz-feedback";
+
+    item.options.forEach((optText, oi) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "quiz-option";
+      btn.textContent = optText;
+      btn.addEventListener("click", () => {
+        if (block.dataset.answered) {
+          return;
+        }
+        block.dataset.answered = "true";
+        const correct = oi === item.answer;
+        opts.querySelectorAll(".quiz-option").forEach((b, bi) => {
+          b.disabled = true;
+          if (bi === item.answer) {
+            b.classList.add("correct");
+          }
+        });
+        if (!correct) {
+          btn.classList.add("wrong");
+        }
+        feedback.textContent = `${correct ? c.quizCorrect : c.quizWrong} ${item.explain}`;
+        feedback.classList.add(correct ? "is-correct" : "is-wrong");
+      });
+      opts.appendChild(btn);
+    });
+
+    block.appendChild(opts);
+    block.appendChild(feedback);
+    container.appendChild(block);
+  });
 }
 
 function renderPackages() {
@@ -1132,7 +1393,6 @@ function renderPackages() {
     item.querySelector("button").addEventListener("click", () => {
       state.tier = pack.tier;
       state.moduleIndex = 0;
-      markViewed();
       render();
       saveState();
       pushProfile();
@@ -1197,7 +1457,6 @@ tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     state.tier = tab.dataset.tier;
     state.moduleIndex = 0;
-    markViewed();
     render();
     saveState();
     pushProfile();
@@ -1328,7 +1587,28 @@ document.querySelector("#samplePrompt").addEventListener("click", () => {
 
 document.querySelector("#checkPrompt").addEventListener("click", checkPrompt);
 
-markViewed();
+document.querySelector("#completeButton").addEventListener("click", toggleComplete);
+
+document.querySelector("#copyPrompt").addEventListener("click", async () => {
+  const c = copy();
+  const text = promptInput.value.trim();
+  if (!text) {
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (error) {
+    // Clipboard may be blocked; fall back to selecting the text.
+    promptInput.focus();
+    promptInput.select();
+  }
+  const button = document.querySelector("#copyPrompt");
+  button.textContent = c.copied;
+  setTimeout(() => {
+    button.textContent = copy().copyPrompt;
+  }, 1500);
+});
+
 saveState();
 render();
 resetContextMessages();

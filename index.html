@@ -146,7 +146,7 @@
                 <div>
                   <p class="eyebrow" id="quizEyebrow">Knowledge check</p>
                   <h4 id="quizTitle">Quiz checkpoint</h4>
-                  <ol id="quizList"></ol>
+                  <div id="quizList" class="quiz-mc"></div>
                 </div>
               </section>
 
@@ -161,7 +161,22 @@
                   <button class="primary-action" type="button" id="checkPrompt">Check prompt</button>
                 </div>
                 <p class="coach-feedback" id="coachFeedback">A strong prompt includes the task, context, format, and what good output looks like.</p>
+
+                <div class="try-live">
+                  <p class="try-live-title" id="tryLiveTitle">Now try it for real</p>
+                  <p class="try-live-help" id="tryLiveHelp">Copy your prompt, open a free AI assistant in a new tab, and paste it in. Remember to remove any private details first.</p>
+                  <div class="try-live-actions">
+                    <button class="secondary-action" type="button" id="copyPrompt">Copy prompt</button>
+                    <a class="tool-link" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">ChatGPT ↗</a>
+                    <a class="tool-link" href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">Gemini ↗</a>
+                    <a class="tool-link" href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude ↗</a>
+                  </div>
+                </div>
               </section>
+
+              <div class="lesson-complete-bar">
+                <button class="primary-action complete-button" type="button" id="completeButton">Mark lesson complete</button>
+              </div>
             </article>
           </section>
         </section>

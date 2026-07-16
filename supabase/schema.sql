@@ -25,7 +25,7 @@ create table public.profiles (
   current_tier text not null default 'starter'
     check (current_tier in ('starter', 'workflows', 'team', 'advanced')),
   current_module_index int not null default 0,
-  viewed_modules jsonb not null default '{}'::jsonb,
+  completed_modules jsonb not null default '{}'::jsonb,
   updated_at timestamptz not null default now()
 );
 

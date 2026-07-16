@@ -721,6 +721,166 @@ textarea {
   line-height: 1.5;
 }
 
+/* ---- Interactive knowledge check ---- */
+.quiz-mc {
+  display: grid;
+  gap: 18px;
+}
+
+.quiz-item {
+  display: grid;
+  gap: 10px;
+}
+
+.quiz-question {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.02rem;
+  font-weight: 750;
+  line-height: 1.45;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 8px;
+}
+
+.quiz-option {
+  width: 100%;
+  min-height: 44px;
+  text-align: left;
+  padding: 11px 14px;
+  border: 1px solid #c8d4e4;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.quiz-option:not(:disabled):hover {
+  border-color: var(--blue-2);
+  background: var(--blue-soft);
+}
+
+.quiz-option:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.quiz-option.correct {
+  border-color: var(--success);
+  background: #e7f5ef;
+  color: #14543c;
+  font-weight: 750;
+}
+
+.quiz-option.wrong {
+  border-color: var(--red);
+  background: #fdecec;
+  color: #7d1414;
+  font-weight: 750;
+}
+
+.quiz-feedback {
+  margin: 0;
+  padding: 0;
+  color: #40516c;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.quiz-feedback:empty {
+  display: none;
+}
+
+.quiz-feedback.is-correct {
+  color: #14543c;
+}
+
+.quiz-feedback.is-wrong {
+  color: #7d1414;
+}
+
+/* ---- Try it live (open a real AI tool) ---- */
+.try-live {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 16px;
+  border: 1px solid #cfd9e8;
+  border-radius: 8px;
+  background: #f4f8ff;
+}
+
+.try-live-title {
+  margin: 0;
+  color: var(--blue);
+  font-size: 1.02rem;
+  font-weight: 850;
+}
+
+.try-live-help {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.try-live-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.tool-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px solid var(--blue);
+  border-radius: 7px;
+  color: var(--blue);
+  background: #ffffff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.tool-link:hover {
+  color: #ffffff;
+  background: var(--blue);
+}
+
+/* ---- Mark lesson complete ---- */
+.lesson-complete-bar {
+  padding: 22px;
+  border-top: 1px solid var(--line);
+  background: #ffffff;
+}
+
+.complete-button {
+  width: 100%;
+}
+
+.complete-button.is-done {
+  border-color: var(--success);
+  background: var(--success);
+}
+
+.complete-button.is-done:hover {
+  background: #14543c;
+}
+
+.module-button.done {
+  border-color: #b7ddcb;
+}
+
+.module-check {
+  color: var(--success);
+  font-weight: 850;
+}
+
 .package-panel {
   padding: 18px;
   width: 100%;
