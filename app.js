@@ -191,26 +191,56 @@ const content = {
           {
             title: "What is AI?",
             summary: "AI is software that can work with language, images, numbers, and patterns. It is useful when you give it clear instructions and check its work.",
-            learn: "Think of AI as a fast assistant, not a perfect expert. It can draft, summarize, translate, compare options, explain confusing topics, and create first versions of documents.",
-            practice: "Ask AI to turn a messy note into a polite message, a checklist, or a short report. Start with low-risk tasks where you can easily review the answer.",
-            local: "For a Vietnamese office team, AI can rewrite a customer reply in warmer language, translate it into English, then create a simple follow-up checklist.",
-            prompt: "I work in retail and need to reply to a customer who received a late delivery. Write a polite Vietnamese message, keep it under 120 words, and include one apology plus one next step."
+            learn: [
+              "Think of today's AI as a fast, tireless assistant — not a perfect expert. Tools like ChatGPT, Gemini, and Claude can read, write, summarize, translate, compare options, explain confusing topics, and produce a first version of almost any document in seconds. What they cannot do is know your specific situation, guarantee every fact is correct, or take responsibility for a decision. That part stays with you.",
+              "The reason this feels new is that AI now works with ordinary language. You no longer need special software skills or code — you type a request the way you would explain it to a capable colleague, and the AI responds. That is why it is useful across almost every kind of office work, from customer replies to reports to planning.",
+              "It helps to picture what is happening underneath. The AI has read an enormous amount of text and learned the patterns of how language fits together. When you ask a question, it predicts a helpful answer one small piece at a time. That makes it excellent at drafting and explaining — and it also means it can sound completely confident while being wrong, which is exactly why you stay the reviewer.",
+              "A good first mindset is simple: AI drafts, you decide. Let it do the heavy lifting of getting words on the page, comparing choices, or turning a mess of notes into something clear. Then you bring the judgment, the local knowledge, and the final approval. Used this way, AI saves you time without putting your work at risk."
+            ],
+            practice: "The best way to learn is to try one small, low-risk task. Take a rough note you wrote this week and ask AI to turn it into a polite message, a short checklist, or a clear summary. Because you already know what the note should say, you can easily judge whether the AI did a good job. Do this two or three times with different tasks and you will quickly get a feel for what AI is good at.",
+            local: "For a Vietnamese office team, AI can take a short, rushed note about a late customer order and rewrite it as a warm, professional reply — then translate that reply into English for a supplier, and finish with a simple follow-up checklist. Three tasks that used to take twenty minutes now take two, and you still read and approve every word before it goes out.",
+            prompt: "I work in retail and need to reply to a customer who received a late delivery. Write a polite Vietnamese message, keep it under 120 words, and include one apology plus one next step.",
+            readings: ["what-is-generative-ai", "what-ai-can-and-cant-do"],
+            quiz: [
+              { q: "Which best describes generative AI, like ChatGPT?", options: ["A search engine that finds existing web pages", "A fast assistant that writes a fresh answer for your request", "A calculator that is always exact"], answer: 1, explain: "Generative AI writes a new response tailored to your request. It is not a search engine, and it is not reliably exact with numbers." },
+              { q: "An AI gives you a confident answer with a specific figure for a report. What should you do?", options: ["Use it as-is; AI is usually right", "Check the figure against a trusted source first", "Never use AI for reports"], answer: 1, explain: "AI can sound sure while being wrong. Verify important facts and numbers before you rely on them." }
+            ]
           },
           {
             title: "Prompting basics",
-            summary: "A good prompt gives the task, background, format, tone, and success criteria.",
-            learn: "Weak prompt: 'Help with my report.' Strong prompt: 'Summarize these sales notes into 5 bullet points for my manager, using simple language and highlighting risks.'",
-            practice: "Use this pattern: role, task, context, output format, constraints. The more specific your workplace situation is, the more useful the answer becomes.",
-            local: "A logistics coordinator can ask AI to compare delayed shipments, draft a customer update, and list which orders need a phone call today.",
-            prompt: "Act as a careful operations assistant. Turn these weekly notes into a short manager update with 3 wins, 3 risks, and 3 next actions. Use simple business English."
+            summary: "A good prompt gives the task, background, format, tone, and success criteria — and prompting works best as a short conversation.",
+            learn: [
+              "In Lesson 1 you saw that AI drafts and you decide. Lesson 2 is about the single skill that most improves those drafts: writing a good prompt. A prompt is just the instruction you give the AI. The difference between a weak and a strong prompt is often the difference between a useless answer and one you can almost use as-is.",
+              "Weak prompts are vague: 'Help with my report.' The AI has to guess what you want, so it gives something generic. Strong prompts include four things: the task (what you want done), the context (the background it needs), the format (how the answer should look), and the standard (what a good result looks like). For example: 'Summarize these sales notes into five short bullet points for my manager, in simple language, and highlight any risks.'",
+              "A reliable pattern to remember is: role, task, context, format, constraints. You can tell the AI who to act as ('act as a careful operations assistant'), what to do, the background, the shape of the answer, and any limits like length or tone. You do not need all five every time, but the more specific you are, the more the answer fits your real situation.",
+              "The last idea builds on Lesson 1's 'you decide': prompting is a conversation, not a single shot. If the first answer is not right, you do not start over — you tell the AI what to change: 'make it shorter', 'use a warmer tone', 'add a line about the deadline'. Two or three small follow-ups usually get you exactly what you need."
+            ],
+            practice: "Take a real task from this week and write it as a strong prompt using the pattern: role, task, context, format, constraints. Then run it, read the answer, and improve it with one follow-up instruction. Notice how much that single follow-up changes the result — that back-and-forth is where most of the value is.",
+            local: "A logistics coordinator can ask AI to act as an operations assistant, compare a list of delayed shipments, draft a short customer update for each, and flag which orders need a phone call today — then follow up with 'make the customer messages more apologetic and under 80 words'.",
+            prompt: "Act as a careful operations assistant. Turn these weekly notes into a short manager update with 3 wins, 3 risks, and 3 next actions. Use simple business English.",
+            readings: ["anatomy-of-a-good-prompt", "improving-with-follow-ups"],
+            quiz: [
+              { q: "Which is the strongest prompt?", options: ["'Help with my report.'", "'Summarize these sales notes into 5 short bullet points for my manager, in simple language, and highlight risks.'", "'Make my report good.'"], answer: 1, explain: "A strong prompt states the task, context, format, and standard. The second option does all four." },
+              { q: "The first answer isn't quite right. What is the best next move?", options: ["Start over with a brand-new prompt", "Tell the AI what to change, e.g. 'make it shorter and warmer'", "Give up and write it yourself"], answer: 1, explain: "Prompting is a conversation. A small follow-up instruction usually gets you exactly what you need." }
+            ]
           },
           {
             title: "Safety and trust",
-            summary: "AI is powerful, but it can be wrong. People still own judgment, privacy, and final decisions.",
-            learn: "Do not paste confidential customer data, salary information, passwords, private contracts, or personal identity numbers into tools unless your company has approved that tool.",
-            practice: "Before using AI output, check facts, numbers, names, dates, and anything that affects customers, money, health, legal topics, or company reputation.",
-            local: "If you work with supplier prices or customer phone numbers, remove names and private details before asking AI to summarize trends.",
-            prompt: "Review this draft announcement for clarity and risk. Flag any claims that need fact-checking, and suggest a safer version in plain language."
+            summary: "AI is powerful, but it can be wrong. You still own privacy, accuracy, and the final decision.",
+            learn: [
+              "You now know how to get good answers from AI. Lesson 3 is about using it safely — the habits that protect your customers, your company, and you. These are simple, but they are the most important thing in this whole level.",
+              "The first rule is about privacy. Unless your company has approved a specific tool, do not paste confidential information into it: customer names and phone numbers, ID or account numbers, passwords, salaries, or private contracts. A safe habit is to remove the private details and describe the situation instead — 'a customer whose order arrived three days late' works just as well as pasting their real name and number.",
+              "The second rule is about accuracy. Because AI predicts likely-sounding text, it can state a wrong fact, number, date, or even a rule that does not exist — while sounding completely sure. People call this a 'hallucination'. So before you use an answer for anything that matters, check it: verify facts and numbers against a trusted source, and read carefully anything that affects customers, money, health, legal topics, or your company's reputation.",
+              "The third rule ties the whole level together: you own the final decision. AI is an assistant that prepares and drafts; it is never the last word. When you keep privacy, accuracy, and judgment in your own hands, you get all the speed of AI with none of the avoidable risk. That is what it means to use AI well."
+            ],
+            practice: "Take an AI answer you generated earlier in this level and run a quick safety check on it. Does it contain any private details that should be removed? Are there facts, numbers, or names you should verify? Would you be comfortable if your manager saw it? Fixing these before you use the answer is the habit that separates confident AI users from risky ones.",
+            local: "If you work with supplier prices or customer phone numbers, remove the names and numbers before asking AI to summarize trends — then double-check any figure the AI repeats back to you against your own records, because a confident-sounding wrong number is the most common mistake.",
+            prompt: "Review this draft announcement for clarity and risk. Flag any claims that need fact-checking, and suggest a safer version in plain language.",
+            readings: ["what-not-to-share", "ai-can-be-wrong"],
+            quiz: [
+              { q: "Which should you NOT paste into an unapproved AI tool?", options: ["A customer's real name and phone number", "A general question about writing a polite reply", "A request to explain a common spreadsheet formula"], answer: 0, explain: "Keep private and customer data out of unapproved tools. Describe the situation without the real details instead." },
+              { q: "Before trusting an AI answer for something important, you should:", options: ["Assume it is correct because it sounds confident", "Check facts, numbers, and names, and consider the impact", "Send it immediately to save time"], answer: 1, explain: "AI can be confidently wrong. Verify anything that affects customers, money, health, legal topics, or reputation." }
+            ]
           }
         ]
       },
@@ -475,26 +505,56 @@ const content = {
           {
             title: "AI là gì?",
             summary: "AI là phần mềm có thể làm việc với ngôn ngữ, hình ảnh, số liệu và các mẫu thông tin. AI hữu ích nhất khi bạn đưa yêu cầu rõ ràng và kiểm tra lại kết quả.",
-            learn: "Hãy xem AI như một trợ lý nhanh, không phải một chuyên gia hoàn hảo. AI có thể viết bản nháp, tóm tắt, dịch, so sánh lựa chọn, giải thích chủ đề khó hiểu và tạo phiên bản đầu tiên của tài liệu.",
-            practice: "Hãy nhờ AI biến ghi chú rời rạc thành email lịch sự, checklist hoặc báo cáo ngắn. Bắt đầu với việc ít rủi ro mà bạn có thể kiểm tra dễ dàng.",
-            local: "Với một đội ngũ văn phòng ở Việt Nam, AI có thể viết lại tin nhắn trả lời khách hàng, dịch sang tiếng Anh, rồi tạo checklist theo dõi.",
-            prompt: "Tôi làm trong ngành bán lẻ và cần trả lời một khách hàng bị giao hàng trễ. Hãy viết một tin nhắn tiếng Việt lịch sự, dưới 120 từ, có một lời xin lỗi và một bước tiếp theo."
+            learn: [
+              "Hãy xem AI ngày nay như một trợ lý nhanh và không biết mệt — không phải một chuyên gia hoàn hảo. Các công cụ như ChatGPT, Gemini và Claude có thể đọc, viết, tóm tắt, dịch, so sánh lựa chọn, giải thích chủ đề khó hiểu và tạo bản nháp đầu tiên của gần như mọi tài liệu chỉ trong vài giây. Điều chúng không làm được là hiểu tình huống cụ thể của bạn, đảm bảo mọi dữ kiện đều đúng, hay chịu trách nhiệm cho một quyết định. Phần đó vẫn thuộc về bạn.",
+              "Lý do điều này mới mẻ là AI giờ làm việc bằng ngôn ngữ thông thường. Bạn không còn cần kỹ năng phần mềm đặc biệt hay lập trình — bạn gõ yêu cầu như đang giải thích cho một đồng nghiệp giỏi, và AI trả lời. Vì vậy nó hữu ích cho hầu hết mọi loại công việc văn phòng, từ trả lời khách hàng đến báo cáo và lập kế hoạch.",
+              "Hãy hình dung điều đang diễn ra bên dưới. AI đã đọc một lượng văn bản khổng lồ và học được cách các từ ghép với nhau. Khi bạn hỏi, nó dự đoán một câu trả lời hữu ích, từng phần nhỏ một. Điều đó khiến nó rất giỏi viết nháp và giải thích — và cũng có nghĩa là nó có thể nghe hoàn toàn chắc chắn mà vẫn sai, nên bạn luôn là người rà soát.",
+              "Một tư duy ban đầu tốt rất đơn giản: AI viết nháp, bạn quyết định. Hãy để nó làm phần nặng là đưa chữ lên trang, so sánh lựa chọn, hay biến mớ ghi chú thành thứ rõ ràng. Sau đó bạn mang đến sự phán đoán, kiến thức thực tế và sự phê duyệt cuối cùng. Dùng cách này, AI tiết kiệm thời gian mà không đặt công việc của bạn vào rủi ro."
+            ],
+            practice: "Cách học tốt nhất là thử một việc nhỏ, ít rủi ro. Lấy một ghi chú thô bạn viết tuần này và nhờ AI biến nó thành tin nhắn lịch sự, một checklist ngắn, hay một bản tóm tắt rõ ràng. Vì bạn đã biết ghi chú nên nói gì, bạn dễ dàng đánh giá AI làm tốt hay chưa. Làm vậy hai ba lần với các việc khác nhau, bạn sẽ nhanh chóng cảm nhận được AI giỏi việc gì.",
+            local: "Với một đội văn phòng ở Việt Nam, AI có thể lấy một ghi chú vội về đơn hàng khách bị trễ và viết lại thành câu trả lời ấm áp, chuyên nghiệp — rồi dịch sang tiếng Anh cho nhà cung cấp, và kết thúc bằng một checklist theo dõi đơn giản. Ba việc trước đây mất hai mươi phút giờ chỉ còn hai phút, và bạn vẫn đọc và duyệt từng chữ trước khi gửi.",
+            prompt: "Tôi làm trong ngành bán lẻ và cần trả lời một khách hàng bị giao hàng trễ. Hãy viết một tin nhắn tiếng Việt lịch sự, dưới 120 từ, có một lời xin lỗi và một bước tiếp theo.",
+            readings: ["what-is-generative-ai", "what-ai-can-and-cant-do"],
+            quiz: [
+              { q: "AI tạo sinh (như ChatGPT) được mô tả đúng nhất là gì?", options: ["Công cụ tìm kiếm tìm các trang web có sẵn", "Một trợ lý nhanh viết ra câu trả lời mới cho yêu cầu của bạn", "Một máy tính luôn chính xác"], answer: 1, explain: "AI tạo sinh viết một phản hồi mới phù hợp với yêu cầu của bạn. Nó không phải công cụ tìm kiếm và không chính xác tuyệt đối với con số." },
+              { q: "AI đưa ra câu trả lời chắc chắn kèm một con số cho báo cáo. Bạn nên làm gì?", options: ["Dùng ngay; AI thường đúng", "Đối chiếu con số với một nguồn đáng tin trước", "Đừng bao giờ dùng AI cho báo cáo"], answer: 1, explain: "AI có thể nghe chắc chắn nhưng vẫn sai. Hãy kiểm tra dữ kiện và con số quan trọng trước khi dựa vào." }
+            ]
           },
           {
             title: "Cơ bản về prompt",
-            summary: "Prompt tốt cần có nhiệm vụ, bối cảnh, định dạng, giọng văn và tiêu chuẩn thành công.",
-            learn: "Prompt yếu: 'Giúp tôi làm báo cáo.' Prompt tốt: 'Tóm tắt ghi chú bán hàng này thành 5 gạch đầu dòng cho quản lý, dùng ngôn ngữ đơn giản và nêu rõ rủi ro.'",
-            practice: "Dùng công thức: vai trò, nhiệm vụ, bối cảnh, định dạng kết quả và giới hạn. Bối cảnh công việc càng rõ thì kết quả càng hữu ích.",
-            local: "Một điều phối viên logistics có thể nhờ AI so sánh các đơn hàng trễ, soạn cập nhật cho khách và liệt kê đơn cần gọi điện trong hôm nay.",
-            prompt: "Đóng vai một trợ lý vận hành cẩn thận. Hãy biến ghi chú hằng tuần này thành bản cập nhật ngắn cho quản lý với 3 điểm tốt, 3 rủi ro và 3 hành động tiếp theo. Dùng tiếng Anh kinh doanh đơn giản."
+            summary: "Prompt tốt cần có nhiệm vụ, bối cảnh, định dạng, giọng văn và tiêu chuẩn — và prompting hiệu quả nhất khi là một cuộc trò chuyện ngắn.",
+            learn: [
+              "Ở Bài 1 bạn đã thấy AI viết nháp còn bạn quyết định. Bài 2 nói về kỹ năng cải thiện các bản nháp đó nhiều nhất: viết một prompt tốt. Prompt chỉ là câu lệnh bạn đưa cho AI. Khác biệt giữa prompt yếu và mạnh thường là khác biệt giữa một câu trả lời vô dụng và một câu bạn gần như dùng được ngay.",
+              "Prompt yếu thì mơ hồ: 'Giúp tôi làm báo cáo.' AI phải đoán bạn muốn gì nên đưa ra thứ chung chung. Prompt mạnh gồm bốn phần: nhiệm vụ (bạn muốn làm gì), bối cảnh (thông tin nền cần thiết), định dạng (câu trả lời trông thế nào) và tiêu chuẩn (một kết quả tốt là như thế nào). Ví dụ: 'Tóm tắt các ghi chú bán hàng này thành năm gạch đầu dòng ngắn cho quản lý, ngôn ngữ đơn giản, và nêu rõ rủi ro.'",
+              "Một công thức dễ nhớ là: vai trò, nhiệm vụ, bối cảnh, định dạng, giới hạn. Bạn có thể bảo AI đóng vai ai ('đóng vai một trợ lý vận hành cẩn thận'), làm gì, bối cảnh, hình dạng câu trả lời, và các giới hạn như độ dài hay giọng văn. Không cần đủ cả năm mỗi lần, nhưng càng cụ thể thì câu trả lời càng khớp với tình huống thật của bạn.",
+              "Ý cuối xây trên tinh thần 'bạn quyết định' của Bài 1: prompting là một cuộc trò chuyện, không phải một lần bắn. Nếu câu trả lời đầu chưa đúng, đừng làm lại từ đầu — hãy bảo AI cần đổi gì: 'ngắn hơn', 'giọng ấm áp hơn', 'thêm một dòng về hạn chót'. Hai ba lần chỉnh nhỏ thường cho bạn đúng điều cần."
+            ],
+            practice: "Lấy một việc thật trong tuần này và viết thành một prompt mạnh theo công thức: vai trò, nhiệm vụ, bối cảnh, định dạng, giới hạn. Sau đó chạy nó, đọc câu trả lời, và cải thiện bằng một câu chỉnh tiếp theo. Hãy để ý câu chỉnh đó thay đổi kết quả nhiều thế nào — chính sự trao đổi qua lại đó là nơi có nhiều giá trị nhất.",
+            local: "Một điều phối viên logistics có thể nhờ AI đóng vai trợ lý vận hành, so sánh danh sách đơn hàng bị trễ, soạn một cập nhật ngắn cho khách với từng đơn, và đánh dấu đơn nào cần gọi điện hôm nay — rồi hỏi tiếp 'làm cho các tin nhắn cho khách xin lỗi nhiều hơn và dưới 80 từ'.",
+            prompt: "Đóng vai một trợ lý vận hành cẩn thận. Hãy biến ghi chú hằng tuần này thành bản cập nhật ngắn cho quản lý với 3 điểm tốt, 3 rủi ro và 3 hành động tiếp theo. Dùng tiếng Anh kinh doanh đơn giản.",
+            readings: ["anatomy-of-a-good-prompt", "improving-with-follow-ups"],
+            quiz: [
+              { q: "Đâu là prompt mạnh nhất?", options: ["'Giúp tôi làm báo cáo.'", "'Tóm tắt các ghi chú bán hàng này thành 5 gạch đầu dòng ngắn cho quản lý, ngôn ngữ đơn giản, và nêu rõ rủi ro.'", "'Làm cho báo cáo của tôi hay lên.'"], answer: 1, explain: "Một prompt mạnh nêu rõ nhiệm vụ, bối cảnh, định dạng và tiêu chuẩn. Lựa chọn thứ hai làm cả bốn." },
+              { q: "Câu trả lời đầu chưa đúng ý. Bước tiếp theo tốt nhất là gì?", options: ["Làm lại từ đầu bằng một prompt mới hoàn toàn", "Bảo AI cần đổi gì, ví dụ 'ngắn hơn và ấm áp hơn'", "Bỏ cuộc và tự viết"], answer: 1, explain: "Prompting là một cuộc trò chuyện. Một câu chỉnh nhỏ thường cho bạn đúng điều cần." }
+            ]
           },
           {
             title: "An toàn và độ tin cậy",
-            summary: "AI rất mạnh, nhưng có thể sai. Con người vẫn chịu trách nhiệm về phán đoán, quyền riêng tư và quyết định cuối cùng.",
-            learn: "Không đưa dữ liệu khách hàng, lương, mật khẩu, hợp đồng riêng hoặc số định danh cá nhân vào công cụ AI nếu công ty chưa phê duyệt.",
-            practice: "Trước khi dùng kết quả AI, hãy kiểm tra sự thật, số liệu, tên, ngày tháng và bất cứ nội dung nào ảnh hưởng đến khách hàng, tiền bạc, y tế, pháp lý hoặc uy tín công ty.",
-            local: "Nếu bạn làm việc với giá nhà cung cấp hoặc số điện thoại khách hàng, hãy xóa tên và thông tin riêng tư trước khi nhờ AI tóm tắt xu hướng.",
-            prompt: "Hãy xem bản nháp thông báo này về độ rõ ràng và rủi ro. Chỉ ra thông tin cần kiểm chứng và đề xuất phiên bản an toàn hơn bằng ngôn ngữ đơn giản."
+            summary: "AI rất mạnh, nhưng có thể sai. Bạn vẫn giữ quyền riêng tư, độ chính xác và quyết định cuối cùng.",
+            learn: [
+              "Giờ bạn đã biết cách lấy câu trả lời tốt từ AI. Bài 3 nói về việc dùng nó an toàn — những thói quen bảo vệ khách hàng, công ty và cả bạn. Chúng đơn giản, nhưng là điều quan trọng nhất trong cả cấp học này.",
+              "Quy tắc đầu tiên là về quyền riêng tư. Nếu công ty chưa phê duyệt một công cụ cụ thể, đừng dán thông tin bảo mật vào đó: tên và số điện thoại khách hàng, số giấy tờ hay tài khoản, mật khẩu, lương, hay hợp đồng riêng tư. Một thói quen an toàn là bỏ thông tin riêng tư ra và mô tả tình huống thay thế — 'một khách hàng có đơn đến trễ ba ngày' cũng hiệu quả như dán tên và số thật của họ.",
+              "Quy tắc thứ hai là về độ chính xác. Vì AI dự đoán văn bản nghe hợp lý, nó có thể nêu sai dữ kiện, con số, ngày tháng, hay cả một quy định không tồn tại — mà vẫn nghe rất chắc chắn. Người ta gọi đây là 'ảo giác'. Vì vậy trước khi dùng một câu trả lời cho việc quan trọng, hãy kiểm tra: đối chiếu dữ kiện và con số với một nguồn đáng tin, và đọc kỹ bất cứ điều gì ảnh hưởng đến khách hàng, tiền bạc, sức khỏe, pháp lý hay uy tín công ty.",
+              "Quy tắc thứ ba gắn kết cả cấp học: bạn sở hữu quyết định cuối cùng. AI là trợ lý chuẩn bị và viết nháp; nó không bao giờ là lời cuối. Khi bạn giữ quyền riêng tư, độ chính xác và sự phán đoán trong tay mình, bạn có được toàn bộ tốc độ của AI mà không có rủi ro có thể tránh. Đó chính là dùng AI một cách đúng đắn."
+            ],
+            practice: "Lấy một câu trả lời AI bạn đã tạo trước đó trong cấp này và chạy một lần kiểm tra an toàn nhanh. Nó có chứa thông tin riêng tư nào cần bỏ không? Có dữ kiện, con số hay tên nào bạn nên kiểm tra không? Bạn có thoải mái nếu quản lý nhìn thấy nó không? Sửa những điều này trước khi dùng chính là thói quen phân biệt người dùng AI tự tin với người dùng đầy rủi ro.",
+            local: "Nếu bạn làm việc với giá nhà cung cấp hay số điện thoại khách hàng, hãy bỏ tên và số ra trước khi nhờ AI tóm tắt xu hướng — rồi kiểm tra lại bất kỳ con số nào AI lặp lại với hồ sơ của chính bạn, vì một con số sai nghe có vẻ chắc chắn là lỗi thường gặp nhất.",
+            prompt: "Hãy xem bản nháp thông báo này về độ rõ ràng và rủi ro. Chỉ ra thông tin cần kiểm chứng và đề xuất phiên bản an toàn hơn bằng ngôn ngữ đơn giản.",
+            readings: ["what-not-to-share", "ai-can-be-wrong"],
+            quiz: [
+              { q: "Điều nào bạn KHÔNG nên dán vào công cụ AI chưa được duyệt?", options: ["Tên thật và số điện thoại của khách hàng", "Một câu hỏi chung về cách viết câu trả lời lịch sự", "Yêu cầu giải thích một công thức bảng tính phổ biến"], answer: 0, explain: "Hãy giữ dữ liệu riêng tư và của khách hàng ngoài công cụ chưa duyệt. Thay vào đó hãy mô tả tình huống mà không có thông tin thật." },
+              { q: "Trước khi tin một câu trả lời AI cho việc quan trọng, bạn nên:", options: ["Cho rằng nó đúng vì nghe chắc chắn", "Kiểm tra dữ kiện, con số, tên và cân nhắc tác động", "Gửi ngay để tiết kiệm thời gian"], answer: 1, explain: "AI có thể sai một cách chắc chắn. Hãy kiểm tra bất cứ điều gì ảnh hưởng đến khách hàng, tiền bạc, sức khỏe, pháp lý hay uy tín." }
+            ]
           }
         ]
       },
@@ -795,6 +855,18 @@ const articles = {
       example: "An AI might invent a statistic or a rule that does not exist. It reads convincingly, but it is simply made up.",
       why: "Always check anything important — facts, numbers, names, legal or medical points — against a trusted source before you use it."
     },
+    "what-ai-can-and-cant-do": {
+      title: "What AI can and can't do (yet)",
+      what: "Today's AI is excellent at working with language: drafting, summarizing, translating, explaining, and comparing. It is unreliable at exact facts, recent events it wasn't trained on, precise math, and judgment about your specific situation.",
+      example: "AI can write a polished first draft of a customer email in seconds. But if you ask it for last month's exact sales figure, it may invent one — that number has to come from you.",
+      why: "Knowing the strong side (words and drafts) from the weak side (exact facts and judgment) tells you when to lean on AI and when to rely on yourself."
+    },
+    "improving-with-follow-ups": {
+      title: "Getting a better answer by asking again",
+      what: "The first answer from AI is a starting point, not the final word. Instead of starting over, tell it what to change — shorter, warmer, add a detail, remove a part. This back-and-forth is where most of the quality comes from.",
+      example: "After a draft reply, follow up with: 'Make it under 80 words, add one apology, and end with a clear next step.' The second version is usually the one you'll actually use.",
+      why: "Treating AI as a conversation, not a vending machine, is the habit that turns 'good enough' drafts into genuinely useful ones."
+    },
     "notes-to-report": {
       title: "Turning messy notes into a clear report",
       what: "AI is very good at taking scattered notes and organizing them. The trick is to tell it the structure you want before it writes.",
@@ -892,6 +964,18 @@ const articles = {
       what: "AI dự đoán câu trả lời nghe có vẻ hợp lý, nên nó có thể nêu sai dữ kiện, ngày tháng hay con số mà vẫn nghe rất chắc chắn. Người ta gọi đây là 'ảo giác' (hallucination).",
       example: "AI có thể bịa ra một số liệu thống kê hoặc một quy định không tồn tại. Đọc rất thuyết phục, nhưng hoàn toàn là bịa.",
       why: "Luôn kiểm tra những điều quan trọng — dữ kiện, con số, tên, vấn đề pháp lý hay y tế — với một nguồn đáng tin trước khi dùng."
+    },
+    "what-ai-can-and-cant-do": {
+      title: "AI làm được và chưa làm được gì (hiện tại)",
+      what: "AI ngày nay rất giỏi làm việc với ngôn ngữ: viết nháp, tóm tắt, dịch, giải thích và so sánh. Nó kém tin cậy với dữ kiện chính xác, sự kiện mới mà nó chưa được học, phép toán chính xác, và phán đoán về tình huống cụ thể của bạn.",
+      example: "AI có thể viết bản nháp email cho khách chỉ trong vài giây. Nhưng nếu bạn hỏi con số doanh thu chính xác của tháng trước, nó có thể bịa ra — con số đó phải đến từ bạn.",
+      why: "Biết mặt mạnh (ngôn từ và bản nháp) và mặt yếu (dữ kiện chính xác và phán đoán) giúp bạn biết khi nào dựa vào AI và khi nào dựa vào chính mình."
+    },
+    "improving-with-follow-ups": {
+      title: "Có câu trả lời tốt hơn bằng cách hỏi lại",
+      what: "Câu trả lời đầu tiên của AI là điểm bắt đầu, không phải kết luận. Thay vì làm lại từ đầu, hãy bảo nó cần đổi gì — ngắn hơn, ấm áp hơn, thêm chi tiết, bỏ bớt một phần. Chính sự trao đổi qua lại này tạo ra phần lớn chất lượng.",
+      example: "Sau một bản nháp trả lời, hãy hỏi tiếp: 'Rút xuống dưới 80 từ, thêm một lời xin lỗi, và kết thúc bằng một bước tiếp theo rõ ràng.' Phiên bản thứ hai thường là bản bạn sẽ thật sự dùng.",
+      why: "Xem AI như một cuộc trò chuyện, không phải máy bán hàng tự động, là thói quen biến bản nháp 'tạm được' thành bản thật sự hữu ích."
     },
     "notes-to-report": {
       title: "Biến ghi chú lộn xộn thành báo cáo rõ ràng",
@@ -1601,7 +1685,17 @@ function renderLesson() {
   document.querySelector("#durationText").textContent = plan.duration;
   document.querySelector("#difficultyText").textContent = plan.difficulty;
   document.querySelector("#capabilityText").textContent = plan.capabilities;
-  document.querySelector("#learnText").textContent = customPrefix + module.learn;
+  const learnEl = document.querySelector("#learnText");
+  learnEl.innerHTML = "";
+  const contextP = document.createElement("p");
+  contextP.className = "lesson-context";
+  contextP.textContent = customPrefix.trim();
+  learnEl.appendChild(contextP);
+  (Array.isArray(module.learn) ? module.learn : [module.learn]).forEach((para) => {
+    const p = document.createElement("p");
+    p.textContent = para;
+    learnEl.appendChild(p);
+  });
   document.querySelector("#practiceText").textContent = module.practice;
   document.querySelector("#localText").textContent = module.local;
   const coach = (coaching[state.language] && coaching[state.language][state.tier]) || coaching.en.starter;
@@ -1610,7 +1704,8 @@ function renderLesson() {
   document.querySelector("#coachStandard").textContent = coach.standard;
   const readingList = document.querySelector("#readingList");
   readingList.innerHTML = "";
-  (readingSlugs[state.tier] || []).forEach((slug) => {
+  const lessonReadings = (module.readings && module.readings.length) ? module.readings : (readingSlugs[state.tier] || []);
+  lessonReadings.forEach((slug) => {
     const art = articles[state.language] && articles[state.language][slug];
     if (!art) {
       return;
@@ -1659,7 +1754,10 @@ function renderQuiz() {
   const c = copy();
   const container = document.querySelector("#quizList");
   container.innerHTML = "";
-  const items = (quizzes[state.language] && quizzes[state.language][state.tier]) || [];
+  const mod = currentModule();
+  const items = (mod.quiz && mod.quiz.length)
+    ? mod.quiz
+    : ((quizzes[state.language] && quizzes[state.language][state.tier]) || []);
   items.forEach((item, qi) => {
     const block = document.createElement("div");
     block.className = "quiz-item";

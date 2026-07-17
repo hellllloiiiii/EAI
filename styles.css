@@ -601,6 +601,21 @@ textarea {
   line-height: 1.6;
 }
 
+.lesson-text {
+  display: grid;
+  gap: 12px;
+}
+
+.lesson-text .lesson-context {
+  color: var(--blue-2);
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.lesson-text .lesson-context:empty {
+  display: none;
+}
+
 .fluency-coach {
   display: grid;
   gap: 16px;
